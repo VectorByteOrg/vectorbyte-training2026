@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "VectorByte Training 2026"
+  navbar:
+    logo: "graphics/vblogoedit.png"
+    logo-alt: "VectorByte Logo"
+    background:	"primary"
+    foreground: "light"
+    left:
+      - href: about.qmd
+        text: About
+      - href: schedule2026.qmd
+        text: Schedule
+      - href: materials.qmd
+        text: Materials
+    right:
+      - icon: github
+        href: https://github.com/VectorByteOrg/vectorbyte-training2026
+        aria-label: GitHub
+    search: TRUE
+        
+format:
+  html:
+    theme:
+      - sandstone
+      - custom.scss
+    css: styles.css
+    toc: true
+    axe: 
+      output: document
+editor: source
+
+
+
+

@@ -4,6 +4,7 @@ project:
 website:
   title: "VectorByte Training 2026"
   navbar:
+    aria-label: "Main"
     logo: "graphics/vblogoedit.png"
     logo-alt: "VectorByte Logo"
     background:	"primary"
@@ -27,7 +28,9 @@ format:
       - sandstone
       - custom.scss
     css: styles.css
-    toc: true
+    toc: true 
+    toc-title: "On This Page"
+    toc-location: left
     axe: 
       output: document
 editor: source

@@ -103,13 +103,17 @@ These data should be transferred to an organized electronic format and checked a
 
 ## What Electronic Formats?
 
-Often easiest to input as a table into a spreadsheet. 
+It's often easiest to input as a table into a spreadsheet. 
+
+<br>
 
 But don’t leave it simply as a spreadsheet – save it to a non-proprietary format, like a comma-delimited file (csv).
 
 <br>
 
 ## How should data be recorded
+
+<br>
 
 <center>
 **`r myred("Input it in the least compact form that you can – you don’t want to lose information!")`**
@@ -120,6 +124,46 @@ But don’t leave it simply as a spreadsheet – save it to a non-proprietary fo
 Usually this means that you want your data to be in a "long" format -- but what does this mean?
 
 ## Long vs. Wide
+
+Wide formats compress multiple individual samples into single rows instead of using a row for each sampling unit:
+
+
+::: columns
+::: {.column width="50%"}
+
+<br>
+
+<center> **`r myblue("WIDE")`** </center>
+
+|  Type    |    #   |  Weight(g)   |
+|:--------:|:------:|:-------------:|
+| Carrots  |  10    | 35.1          |
+| Peppers  |  30    | 30.4          |
+| Broccoli |  5     | 200.4         |
+
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="45%"}
+
+<center> **`r myblue("LONG")`** </center>
+
+|  Type    | weight |  units   |
+|:--------:|:------:|:--------:|
+| Carrot   |  2.3   |  g       |
+| Pepper   |  3.2   |  g       |
+| Broccoli |  5.8   |  g       |
+| Pepper   |  2.2   |  g       |
+| Carrot   |  1.5   |  g       |
+
+
+:::
+
+:::
 
 ## Metadata
 
@@ -133,7 +177,7 @@ Usually this means that you want your data to be in a "long" format -- but what 
 ## Examples from VectorByte
 
 
-## Check Data
+## 2. Check Your Data
 
 Almost always errors are made when data are being collected or inputted.
 
@@ -143,12 +187,70 @@ Almost always errors are made when data are being collected or inputted.
 - Instrument errors
 - Skip some data
 
-As (and after) you input, do some "sanity checks" 
+-------------------------------
+
+As (and after) you input, do some "sanity checks" as your first steps:
 
 - count/sum across rows and columns 
 - check for empty fields
+- calculate summary statistics
 - visualize your data and look for outliers.
 
+<center>`r myblue("Simple checks are the most important!")`</center>
+
+
+## 3. Store and Curate Data
+
+::: columns
+::: {.column width="50%"}
+
+Traditionally, the preferred medium for a "permanent" archival copy is acid-free paper.
+It has some important advantages:
+
+- non-proprietary format
+- doesn't need electricity to maintain
+- properly stored, can last hundreds of years.
+
+
+:::
+
+::: {.column width="6%"}
+
+:::
+
+::: {.column width="44%"}
+
+<br>
+
+That's not the case with many electronic formats...
+
+<br>
+
+<center>
+![](graphics/Floppy.jpg)</center>
+
+<br>
+
+:::
+
+:::
+
+## Data Storage
+
+Electronic storage requires updating to new hardware every 5-10 years. Storing data in the cloud outsources much of this effort. 
+
+
+**Cloud storage of your data (and your code/ analyses) on a remote server in addition to your local machine is a `r myblue("really good")` idea.**
+
+Further, versioning systems let you keep track of changes and recover old versions of your files (in case you mess up and write over them). This includes `r myred("GIT")` (that we've already seen).
 
 ## FAIR Data Practices
+
+One of the most important practices is to ensure that your data will be preserved and eventually made accessible to others. In particular we want our data to be **FAIR**:
+
+- **`r myred("F")`indable**
+- **`r myred("A")`ccessible**
+- **`r myred("I")`nteroperable**
+- **`r myred("R")`eproducible**
+
 

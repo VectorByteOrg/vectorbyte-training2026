@@ -1,0 +1,78 @@
+---
+title: "2026 Training Schedule"
+description: "Schedule for in-person training sessions"
+format:
+  html:
+    toc: true
+    html-math-method: katex
+---
+
+## Pre-workshop
+
+Information about pre-workshop preparation -- including software installation, expectations for what you should already be familiar with, and review materials -- is available in the [pre-work portion of the materials page](materials.html#pre-work-and-set-up).
+
+<br> <br> <br>
+
+## Arrival: 29 May 2026
+
+| Time | Activity | 
+|------|----------|
+|      | Arrival  | 
+
+<br> <br> <br>
+
+## Day 1: 30 May 2026 (08:30 - 17:30)
+
+Morning activities will be joint with the EEID workshop
+
+| Time   | Activity | Materials |
+|--------|----------|-----------|
+| 8:30   | Overview and Introduction (*with EEID*) |   |
+| 9:00   | Intro to GitHub through R (*with EEID*) |   |
+| 10:30  | Break    |           |
+| 10:45  | Data Management in R (*with EEID*) | |
+| 12:00  | Lunch    |           |
+| 13:00  | Introduction to Traits, the VecTraits Database, AI assisted digitization |  |
+| 15:00  | Break    |           |
+| 15:30  | Simple trait analysis pipeline with VecTraits and R |    |
+
+<br> <br> <br>
+
+## Day 2: 31 May 2026 (08:30 - 17:30)
+
+| Time   | Activity | Materials |
+|--------|----------|-----------|
+| 8:30   | Overview  of the day         |           |
+| 9:00   | Intro to time dependent data and VecDyn | |
+| 10:30  | Break    |           |
+| 11:00  | Environmental covariates for time and space dependent data  |   |
+| 12:00  | Lunch    |           |
+| 13:00  | Simple vector dynamic analysis pipeline with VecDyn and R |  |
+| 14:30  | Break    |           |
+| 15:00  | Begin Projects    |   |
+| 17:00  | Lightning talks    |           |
+
+<br>
+<br>
+<br>
+
+## Day 3: 1 June 2026 (08:30 - 12:00)
+
+| Time.  | Activity                       | Materials |
+|--------|--------------------------------|-----------|
+| 8:30   | Project Tim           |           |
+| 10:30  | Break                 |           |
+| 11:00  | Present Projects (*with EEID*) |           |
+| 12:00  | Lunch     |           |
+
+
+
+<br>
+<br>
+<br>
+
+## Post-workshop
+
+Enjoy using these new techniques and databases!
+
+<br> <br> <br>

@@ -1,0 +1,70 @@
+---
+title: "VectorByte Training Materials 2026"
+format:
+  html:
+    toc: true
+    toc-location: left
+    html-math-method: katex
+---
+
+## Pre-work and set-up
+
+### Pre-workshop reading
+
+Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:
+
+1. [MIReAD, a minimum information standard for reporting arthropod abundance data](https://www.nature.com/articles/s41597-019-0042-5)
+
+2. [MIReVTD, a minimum information standard for reporting vector trait data](https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giag020/8502135)
+
+3. [The Role of Vector Trait Variation in Vector-Borne Disease Dynamics](https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2020.00189/full)
+
+<br>
+<br>
+
+
+### Hardware and Software
+
+- We will be using [`R`](https://cran.r-project.org/) for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have `R` (version 3.6 or higher) installed.
+
+- You may use any IDE/ GUI for `R` (VScode, RStudio, Emacs, etc). For most people, [`RStudio`](https://www.rstudio.com/) is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.
+
+- We also host all materials on [GitHub](https://github.com/), and all students should have a GitHub account. 
+
+<br>
+<br>
+
+
+### Optional: Review of `R` and Statistics
+
+We are assuming familiarity with `R` basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from [The Multilingual Quantitative Biologist](https://mhasoba.github.io/TheMulQuaBio/intro.html).
+
+
+1. `R`: [Biological Computing in R Chapter](https://mhasoba.github.io/TheMulQuaBio/notebooks/07-R.html). 
+
+2. Basic statistics, through linear models: [The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics](https://mhasoba.github.io/TheMulQuaBio/Stats-Intro.html).
+
+
+
+<br> <br>
+
+## Live Workshop Materials
+
+## Introduction to the Workshops
+
+-   [Lecture Slides](VB_Welcome.qmd)
+
+<br> <br>
+
+
+## Introduction to Data Types and Sources
+
+- [Lecture Slides](VB_IntroData.qmd)
+
+<br> <br>
+
+## Introduction to Traits
+
+- [Lecture Slides](VB_intro_to_traits.qmd)
+
+

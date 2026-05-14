@@ -52,6 +52,8 @@ insert_html_math <- make_latex_decorator("", "$$")
 
 ## Introduction to Traits - Objectives
 
+<br>
+
 • Define a “trait”
 
 • Understand the role of traits (and their variation) in VBDs
@@ -62,91 +64,173 @@ insert_html_math <- make_latex_decorator("", "$$")
 
 Any agent which carries and transmits an infectious agent between hosts
 
-<center>(graphics/intro_traits_1.jpg)</center>
+<center>
+![](graphics/intro_traits_1.jpg)
+</center>
 
 ## What kinds of animals are vectors?
 
 Many! Although arthropods are most commonly studied
 
-<center>(graphics/intro_traits_2.jpg)</center>
+<center>
+![](graphics/intro_traits_2.jpg)
+</center>
 
 ## Overview of VBD Transmission
 
 Mechanical Transmission
 
-(graphics/intro_traits_3a.jpg)(graphics/intro_traits_3b.jpg)
+::: columns
+::: {.column width="50%"}
+
+![](graphics/intro_traits_3a.jpg){width="99%"}
+
+:::
+::: {.column width="50%"}
+
+
+![](graphics/intro_traits_3b.jpg){width="99%"}
+
+:::
+:::
 
 ## Overview of VBD Transmission
 
 Biological Transmission
 
-(graphics/intro_traits_4a.jpg)(graphics/intro_traits_4b.jpg)
+
+::: columns
+::: {.column width="50%"}
+
+![](graphics/intro_traits_4a.jpg){width="99%"}
+
+:::
+::: {.column width="50%"}
+
+
+![](graphics/intro_traits_4b.jpg){width="99%"}
+
+:::
+:::
+-----------------------------------------------------------------------
+
+<center>
+![](graphics/intro_traits_5.jpg)
+</center>
 
 -----------------------------------------------------------------------
 
-<center>(graphics/intro_traits_5.jpg)</center>
 
------------------------------------------------------------------------
 Pathogens undergo obligate develoment in the mosquito 
-<center>(graphics/intro_traits_7.jpg)</center>
+<center>
+![](graphics/intro_traits_7.jpg)
+</center>
 
-## VBD Transmission is the Instersection of Two Cycles 
+## VBD Transmission is the Intersection of Two Cycles 
+
 Intrinsic and Extrinsic Incubation Periods 
-<center>(graphics/intro_traits_8.jpg)</center>
+<center>
+![](graphics/intro_traits_8.jpg){width="85%"}
+</center>
 
 -----------------------------------------------------------------------
 
-<center>(graphics/intro_traits_9.jpg)</center>
+<center>
+![](graphics/intro_traits_9.jpg)
+</center>
 
 What elements do we need to include?
 
 ## What is a Trait?
 
-Any measurable feature of an individual organism
+***Any measurable feature of an individual organism***
 
-Functional trait feeding rate, size, metabolic rate, eggs per day
+<br>
 
-Behavioral trait questing, host/food preference, thermal regulation, site selection
+*Functional traits* 
+
+$\Rightarrow$ feeding rate, size, metabolic rate, eggs per day
+
+<br>
+
+*Behavioral traits* 
+
+$\Rightarrow$  questing, host/food preference, thermal regulation, site selection
 
 ## Variability in Traits
 
-<center>(graphics/intro_traits_13.jpg)</center>                       
------------------------------------------------------------------------
-We can get more complex/realistic 
+<br>
 
-<center>(graphics/SIR_2.jpg)</center>
+<center>
+![](graphics/intro_traits_13.jpg)
+</center>                       
 
------------------------------------------------------------------------
-
-But with every parameter added, there is a greater need for data
-
-<center>(graphics/SIR_3.jpg)</center>
 -----------------------------------------------------------------------
 
-<center>(graphics/SIR_4.jpg)</center>
+We can get more complex/realistic models...
 
-## R0 for a Directly-Transmitted Pathogen
+<center>
+![](graphics/SIR_2.jpg)
+</center>
 
-<center>(graphics/intro_traits_10.jpg)</center>
+-----------------------------------------------------------------------
 
-## R0 for a Vector-Borne Pathogen
+But with every parameter added, more data is needed!
 
-<center>(graphics/intro_traits_12.jpg)</center>
+<center>
+![](graphics/SIR_3.jpg)
+</center>
+
+-----------------------------------------------------------------------
+
+<center>
+![](graphics/SIR_4.jpg)
+</center>
+
+## $R_0$: Directly-Transmitted Pathogen
+
+<center>
+![](graphics/intro_traits_10.jpg)
+</center>
+
+## $R_0$: Vector-Borne Pathogen
+
+<center>
+![](graphics/intro_traits_12.jpg)
+</center>
 
 ## Thermal Performance Curves (TPCs)
+
+::: columns
+::: {.column width="40%"}
+
+<br>
 
 - Vectors of interest are typically ectothermic
 
 - Biological reactions typically go faster as temperature increases
 
-<center>(graphics/TPC_1.jpg)</center>
+::: 
+::: {.column width="60%"}
 
-##But there's a limit!
+<center>
+![](graphics/TPC_2.jpg)
+</center>
+:::
 
-<center>(graphics/TPC_3.jpg)</center>
+:::
+
+## But there's a limit!
+
+<center>
+![](graphics/TPC_3.jpg){width="80%"}
+</center>
 
 
 -----------------------------------------------------------------------
+
+::: columns
+::: {.column width="50%"}
 
 - Nearly every aspect of life history is influenced by temperature
 
@@ -158,13 +242,24 @@ But with every parameter added, there is a greater need for data
 
 - Unimodal curves are more realistic 
 
-<center>(graphics/TPC_2.jpg)</center>
+::: 
+::: {.column width="50%"}
+
+<center>
+![](graphics/TPC_2.jpg){width="75%"}
+![](graphics/TPC_1.jpg){width="75%"}
+</center>
+:::
+
+:::
 
 ------------------------------------------------------------------------
 
 Different traits have different curves
 
-<center>(graphics/TPC_6.jpg)</center>
+<center>
+![](graphics/TPC_6.jpg)
+</center>
 
 ------------------------------------------------------------------------
 
@@ -172,23 +267,31 @@ Thermal limits are useful for predictions and mapping
 
 ## Estimating TPCs
 
-- TPCs derived from empirical data from laboratory experiments
+TPCs are derived using empirical data from laboratory experiments.
 
-<center>(graphics/TPC_4.jpg)</center>
+<center>
+![](graphics/TPC_4.jpg){width="70%"}
+</center>
 
 ## Need to Collect Data Across a Thermal Gradient
+
+<br>
 
 - Ideally want to capture data across a wide thermal gradient
 - Need enough temperatures to estimate minimum, maximum, and optimum values
 
 ## Fitting TPCs
 
-- Thermal responses can have many possible shapes
+TPCs can have many possible shapes:
 
-<center>(graphics/TPC_7.jpg)</center>
+<center>
+![](graphics/TPC_7.jpg){width="75%"}
+</center>
 
 ## Model Validation
 
-- Real data from the field or other experiments can help validate our estimates
+Data from the field or other experiments can help validate estimates.
 
-<center>(graphics/TPC_5.jpg)</center>
+<center>
+![](graphics/TPC_5.jpg){width="65%"}
+</center>

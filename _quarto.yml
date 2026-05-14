@@ -31,8 +31,7 @@ format:
     toc: true 
     toc-title: "On This Page"
     toc-location: left
-    axe: 
-      output: document
+    axe: true
 editor: source
 
 

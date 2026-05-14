@@ -1,5 +1,334 @@
 [
   {
+    "objectID": "VB_Welcome.html#welcome",
+    "href": "VB_Welcome.html#welcome",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "Welcome!",
+    "text": "Welcome!\nThis is a joint training workshop hosted by the Vector Byte Initiative and the Ecology and Evolution of Infectious Diseases Conference."
+  },
+  {
+    "objectID": "VB_Welcome.html#history-eeid",
+    "href": "VB_Welcome.html#history-eeid",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "History – EEID",
+    "text": "History – EEID\n\nFirst meeting in 2003 (Penn State)\nHas occurred annually after that\nA subset of these meetings has included training workshops (mostly late 2000s) but they have been brought back for the last 3 meetings (Stanford, Notre Dame, VT)"
+  },
+  {
+    "objectID": "VB_Welcome.html#history-vectorbyte",
+    "href": "VB_Welcome.html#history-vectorbyte",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "History – VectorByte",
+    "text": "History – VectorByte\n\nBegan as the NIH/BBSRC supported Vector Behavior in Transmission Ecology Research Coordination Network (VectorBiTE RCN) in 2015\nInitially consisted of networking meetings, training, and initial development of databases\nVectorByte Initiative is the NSF funded project that grew out of this, focusing on development of publicly available databases and training workshops"
+  },
+  {
+    "objectID": "VB_Welcome.html#eeid-and-vectorbyte-training",
+    "href": "VB_Welcome.html#eeid-and-vectorbyte-training",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "EEID and VectorByte Training",
+    "text": "EEID and VectorByte Training\n\nThis is the second year that the EEID and VectorByte trainings have been co-located, and VectorByte provided some of the training for EEID 3 years ago.\n\nThis year, we’ve integrated them further to allow more opportunities for networking, and to leverage our extended expertise at Virginia Tech."
+  },
+  {
+    "objectID": "VB_Welcome.html#schedule",
+    "href": "VB_Welcome.html#schedule",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "Schedule",
+    "text": "Schedule\n\n\nSaturday/Sunday (8:30am - 5:30pm):\n\nSession 1 (joint on Sat.)\nBreak (joint)\nSession 2 (joint on Sat.)\nLunch (joint)\nSession 3 (divided)\nBreak (joint)\nSession 4 (divided)\n\n\n\n\nMonday (8:30am - 1:00pm):\n\nSession 1 (divided)\nBreak (joint)\nSession 2 – Presentations (joint)\nLunch (joint)\n\nMore detailed schedules are on the respective training websites."
+  },
+  {
+    "objectID": "VB_Welcome.html#logistics",
+    "href": "VB_Welcome.html#logistics",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "Logistics",
+    "text": "Logistics\n\nAll joint sessions will occur in the large meeting room\nbreaks and lunch will be held in the lobby areas on the first floor of Steger\nVectorByte sessions: Steger 118\nEEID sessions: Steger 325"
+  },
+  {
+    "objectID": "VB_Welcome.html#meet-the-teams",
+    "href": "VB_Welcome.html#meet-the-teams",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "Meet the Teams",
+    "text": "Meet the Teams"
+  },
+  {
+    "objectID": "VB_Welcome.html#vectorbyte-showcase",
+    "href": "VB_Welcome.html#vectorbyte-showcase",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "VectorByte Showcase",
+    "text": "VectorByte Showcase\n\nInterested in learning more about data resources for VBD systems or more networking?\nSign up for the VectorByte Showcase:\n\n1:30 - 4:00pm\nSteger Auditorium and Lobby (where we are now)\nFood and networking"
+  },
+  {
+    "objectID": "VB_Welcome.html#questions",
+    "href": "VB_Welcome.html#questions",
+    "title": "VectorByte and EEID Methods Training",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "materials_draft.html",
+    "href": "materials_draft.html",
+    "title": "VectorByte Training Materials 2026",
+    "section": "",
+    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
+  },
+  {
+    "objectID": "materials_draft.html#pre-work-and-set-up",
+    "href": "materials_draft.html#pre-work-and-set-up",
+    "title": "VectorByte Training Materials 2026",
+    "section": "",
+    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
+  },
+  {
+    "objectID": "materials_draft.html#live-workshop-materials",
+    "href": "materials_draft.html#live-workshop-materials",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Live Workshop Materials",
+    "text": "Live Workshop Materials"
+  },
+  {
+    "objectID": "materials_draft.html#introduction-to-the-workshops",
+    "href": "materials_draft.html#introduction-to-the-workshops",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Introduction to the Workshops",
+    "text": "Introduction to the Workshops\n\nLecture Slides"
+  },
+  {
+    "objectID": "materials_draft.html#introduction-to-data-types-and-sources",
+    "href": "materials_draft.html#introduction-to-data-types-and-sources",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Introduction to Data Types and Sources",
+    "text": "Introduction to Data Types and Sources\n\nLecture Slides"
+  },
+  {
+    "objectID": "materials_draft.html#introduction-to-traits",
+    "href": "materials_draft.html#introduction-to-traits",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Introduction to Traits",
+    "text": "Introduction to Traits\n\nLecture Slides"
+  },
+  {
+    "objectID": "VB_IntroData.html#why-is-datacode-curation-and-management-important",
+    "href": "VB_IntroData.html#why-is-datacode-curation-and-management-important",
+    "title": "VectorByte Methods Training",
+    "section": "Why is Data/Code Curation and Management Important?",
+    "text": "Why is Data/Code Curation and Management Important?\nIn order for analyses to be repeatable, data and code first must:\n\nproperly organized and documented\naccessibly stored and findable, and\nideally, made available to others.\n\nData obtained with support from public funds (such as NSF or NIH) are usually required to be made available to other scientists and the public."
+  },
+  {
+    "objectID": "VB_IntroData.html#steps-to-data-management",
+    "href": "VB_IntroData.html#steps-to-data-management",
+    "title": "VectorByte Methods Training",
+    "section": "Steps to Data Management",
+    "text": "Steps to Data Management\nThere are many steps to obtaining and effectively managing data (right, below). Today we talk about important components that fit in areas (ii) to (v).\n\n\n\n\nManage Raw Data\nCheck Data\nStore and Curate Data"
+  },
+  {
+    "objectID": "VB_IntroData.html#manage-raw-data",
+    "href": "VB_IntroData.html#manage-raw-data",
+    "title": "VectorByte Methods Training",
+    "section": "1. Manage Raw Data",
+    "text": "1. Manage Raw Data\nSo you’ve got some “raw” data:\n\nhandwritten notes\nautomatic data logger (this includes sequencing machines, temperature monitors, etc.)\noutput from simulation\n\nThese data should be transferred to an organized electronic format and checked as soon as possible after collection."
+  },
+  {
+    "objectID": "VB_IntroData.html#what-electronic-formats",
+    "href": "VB_IntroData.html#what-electronic-formats",
+    "title": "VectorByte Methods Training",
+    "section": "What Electronic Formats?",
+    "text": "What Electronic Formats?\nIt’s often easiest to input as a table into a spreadsheet.\n\nBut don’t leave it simply as a spreadsheet – save it to a non-proprietary format, like a comma-delimited file (csv)."
+  },
+  {
+    "objectID": "VB_IntroData.html#how-should-data-be-recorded",
+    "href": "VB_IntroData.html#how-should-data-be-recorded",
+    "title": "VectorByte Methods Training",
+    "section": "How should data be recorded",
+    "text": "How should data be recorded\n\n\nInput it in the least compact form that you can – you don’t want to lose information!\n\n\nUsually this means that you want your data to be in a “long” format – but what does this mean?"
+  },
+  {
+    "objectID": "VB_IntroData.html#long-vs.-wide",
+    "href": "VB_IntroData.html#long-vs.-wide",
+    "title": "VectorByte Methods Training",
+    "section": "Long vs. Wide",
+    "text": "Long vs. Wide\nWide formats compress multiple individual samples into single rows instead of using a row for each sampling unit:\n\n\n\n\nWIDE\n\n\n\n\nType\n#\nWeight(g)\n\n\n\n\nCarrots\n10\n35.1\n\n\nPeppers\n30\n30.4\n\n\nBroccoli\n5\n200.4\n\n\n\n\n\n\n\nLONG\n\n\n\n\nType\nweight\nunits\n\n\n\n\nCarrot\n2.3\ng\n\n\nPepper\n3.2\ng\n\n\nBroccoli\n5.8\ng\n\n\nPepper\n2.2\ng\n\n\nCarrot\n1.5\ng"
+  },
+  {
+    "objectID": "VB_IntroData.html#metadata",
+    "href": "VB_IntroData.html#metadata",
+    "title": "VectorByte Methods Training",
+    "section": "Metadata",
+    "text": "Metadata"
+  },
+  {
+    "objectID": "VB_IntroData.html#what-is-in-a-row-of-data",
+    "href": "VB_IntroData.html#what-is-in-a-row-of-data",
+    "title": "VectorByte Methods Training",
+    "section": "What is in a “row” of data?",
+    "text": "What is in a “row” of data?\n\nunits separate from measured values\ndates\nindividual measurements when possible\nseparate columns for all covariates with units and settings recorded separately."
+  },
+  {
+    "objectID": "VB_IntroData.html#examples-from-vectorbyte",
+    "href": "VB_IntroData.html#examples-from-vectorbyte",
+    "title": "VectorByte Methods Training",
+    "section": "Examples from VectorByte",
+    "text": "Examples from VectorByte"
+  },
+  {
+    "objectID": "VB_IntroData.html#check-your-data",
+    "href": "VB_IntroData.html#check-your-data",
+    "title": "VectorByte Methods Training",
+    "section": "2. Check Your Data",
+    "text": "2. Check Your Data\nAlmost always errors are made when data are being collected or inputted.\n\nDecimal points moved\nDigits switched\nMissing data are not properly encoded\nInstrument errors\nSkip some data"
+  },
+  {
+    "objectID": "VB_IntroData.html#store-and-curate-data",
+    "href": "VB_IntroData.html#store-and-curate-data",
+    "title": "VectorByte Methods Training",
+    "section": "3. Store and Curate Data",
+    "text": "3. Store and Curate Data\n\n\nTraditionally, the preferred medium for a “permanent” archival copy is acid-free paper. It has some important advantages:\n\nnon-proprietary format\ndoesn’t need electricity to maintain\nproperly stored, can last hundreds of years.\n\n\n\n\n\nThat’s not the case with many electronic formats…"
+  },
+  {
+    "objectID": "VB_IntroData.html#data-storage",
+    "href": "VB_IntroData.html#data-storage",
+    "title": "VectorByte Methods Training",
+    "section": "Data Storage",
+    "text": "Data Storage\nElectronic storage requires updating to new hardware every 5-10 years. Storing data in the cloud outsources much of this effort.\nCloud storage of your data (and your code/ analyses) on a remote server in addition to your local machine is a really good idea.\nFurther, versioning systems let you keep track of changes and recover old versions of your files (in case you mess up and write over them). This includes GIT (that we’ve already seen)."
+  },
+  {
+    "objectID": "VB_IntroData.html#fair-data-practices",
+    "href": "VB_IntroData.html#fair-data-practices",
+    "title": "VectorByte Methods Training",
+    "section": "FAIR Data Practices",
+    "text": "FAIR Data Practices\nOne of the most important practices is to ensure that your data will be preserved and eventually made accessible to others. In particular we want our data to be FAIR:\n\nFindable\nAccessible\nInteroperable\nReproducible"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the 2026 VectorByte Training Workshop",
+    "section": "",
+    "text": "Check out our about and schedule pages to continue.\nInformation about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
+  },
+  {
+    "objectID": "schedule2026_draft.html",
+    "href": "schedule2026_draft.html",
+    "title": "2026 Training Schedule",
+    "section": "",
+    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
+  },
+  {
+    "objectID": "schedule2026_draft.html#pre-workshop",
+    "href": "schedule2026_draft.html#pre-workshop",
+    "title": "2026 Training Schedule",
+    "section": "",
+    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
+  },
+  {
+    "objectID": "schedule2026_draft.html#arrival-29-may-2026",
+    "href": "schedule2026_draft.html#arrival-29-may-2026",
+    "title": "2026 Training Schedule",
+    "section": "Arrival: 29 May 2026",
+    "text": "Arrival: 29 May 2026\n\n\n\nTime\nActivity\n\n\n\n\n\nArrival"
+  },
+  {
+    "objectID": "schedule2026_draft.html#day-1-30-may-2026-0830---1730",
+    "href": "schedule2026_draft.html#day-1-30-may-2026-0830---1730",
+    "title": "2026 Training Schedule",
+    "section": "Day 1: 30 May 2026 (08:30 - 17:30)",
+    "text": "Day 1: 30 May 2026 (08:30 - 17:30)\nMorning activities will be joint with the EEID workshop\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview and Introduction (with EEID)\n\n\n\n9:00\nIntro to GitHub through R (with EEID)\n\n\n\n10:30\nBreak\n\n\n\n10:45\nData Management in R (with EEID)\n\n\n\n12:00\nLunch\n\n\n\n13:00\nIntroduction to Traits, the VecTraits Database, AI assisted digitization\n\n\n\n15:00\nBreak\n\n\n\n15:30\nSimple trait analysis pipeline with VecTraits and R"
+  },
+  {
+    "objectID": "schedule2026_draft.html#day-2-31-may-2026-0830---1730",
+    "href": "schedule2026_draft.html#day-2-31-may-2026-0830---1730",
+    "title": "2026 Training Schedule",
+    "section": "Day 2: 31 May 2026 (08:30 - 17:30)",
+    "text": "Day 2: 31 May 2026 (08:30 - 17:30)\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview of the day\n\n\n\n9:00\nIntro to time dependent data and VecDyn\n\n\n\n10:30\nBreak\n\n\n\n11:00\nEnvironmental covariates for time and space dependent data\n\n\n\n12:00\nLunch\n\n\n\n13:00\nSimple vector dynamic analysis pipeline with VecDyn and R\n\n\n\n14:30\nBreak\n\n\n\n15:00\nBegin Projects\n\n\n\n17:00\nLightning talks"
+  },
+  {
+    "objectID": "schedule2026_draft.html#day-3-1-june-2026-0830---1200",
+    "href": "schedule2026_draft.html#day-3-1-june-2026-0830---1200",
+    "title": "2026 Training Schedule",
+    "section": "Day 3: 1 June 2026 (08:30 - 12:00)",
+    "text": "Day 3: 1 June 2026 (08:30 - 12:00)\n\n\n\nTime.\nActivity\nMaterials\n\n\n\n\n8:30\nProject Tim\n\n\n\n10:30\nBreak\n\n\n\n11:00\nPresent Projects (with EEID)\n\n\n\n12:00\nLunch"
+  },
+  {
+    "objectID": "schedule2026_draft.html#post-workshop",
+    "href": "schedule2026_draft.html#post-workshop",
+    "title": "2026 Training Schedule",
+    "section": "Post-workshop",
+    "text": "Post-workshop\nEnjoy using these new techniques and databases!"
+  },
+  {
+    "objectID": "schedule2026.html",
+    "href": "schedule2026.html",
+    "title": "2026 Training Schedule",
+    "section": "",
+    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
+  },
+  {
+    "objectID": "schedule2026.html#pre-workshop",
+    "href": "schedule2026.html#pre-workshop",
+    "title": "2026 Training Schedule",
+    "section": "",
+    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
+  },
+  {
+    "objectID": "schedule2026.html#arrival-29-may-2026",
+    "href": "schedule2026.html#arrival-29-may-2026",
+    "title": "2026 Training Schedule",
+    "section": "Arrival: 29 May 2026",
+    "text": "Arrival: 29 May 2026\n\n\n\nTime\nActivity\n\n\n\n\n\nArrival"
+  },
+  {
+    "objectID": "schedule2026.html#day-1-30-may-2026-0830---1730",
+    "href": "schedule2026.html#day-1-30-may-2026-0830---1730",
+    "title": "2026 Training Schedule",
+    "section": "Day 1: 30 May 2026 (08:30 - 17:30)",
+    "text": "Day 1: 30 May 2026 (08:30 - 17:30)\nMorning activities will be joint with the EEID workshop\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview and Introduction (with EEID)\n\n\n\n9:00\nIntro to GitHub through R (with EEID)\n\n\n\n10:30\nBreak\n\n\n\n10:45\nData Management in R (with EEID)\n\n\n\n12:00\nLunch\n\n\n\n13:00\nIntroduction to Traits, the VecTraits Database, AI assisted digitization\n\n\n\n15:00\nBreak\n\n\n\n15:30\nSimple trait analysis pipeline with VecTraits and R"
+  },
+  {
+    "objectID": "schedule2026.html#day-2-31-may-2026-0830---1730",
+    "href": "schedule2026.html#day-2-31-may-2026-0830---1730",
+    "title": "2026 Training Schedule",
+    "section": "Day 2: 31 May 2026 (08:30 - 17:30)",
+    "text": "Day 2: 31 May 2026 (08:30 - 17:30)\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview of the day\n\n\n\n9:00\nIntro to time dependent data and VecDyn\n\n\n\n10:30\nBreak\n\n\n\n11:00\nEnvironmental covariates for time and space dependent data\n\n\n\n12:00\nLunch\n\n\n\n13:00\nSimple vector dynamic analysis pipeline with VecDyn and R\n\n\n\n14:30\nBreak\n\n\n\n15:00\nBegin Projects\n\n\n\n17:00\nLightning talks"
+  },
+  {
+    "objectID": "schedule2026.html#day-3-1-june-2026-0830---1200",
+    "href": "schedule2026.html#day-3-1-june-2026-0830---1200",
+    "title": "2026 Training Schedule",
+    "section": "Day 3: 1 June 2026 (08:30 - 12:00)",
+    "text": "Day 3: 1 June 2026 (08:30 - 12:00)\n\n\n\nTime.\nActivity\nMaterials\n\n\n\n\n8:30\nProject Time\n\n\n\n10:30\nBreak\n\n\n\n11:00\nPresent Projects (with EEID)\n\n\n\n12:00\nLunch"
+  },
+  {
+    "objectID": "schedule2026.html#post-workshop",
+    "href": "schedule2026.html#post-workshop",
+    "title": "2026 Training Schedule",
+    "section": "Post-workshop",
+    "text": "Post-workshop\nEnjoy using these new techniques and databases!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the VectorByte Training Materials 2026",
+    "section": "",
+    "text": "As the VectorByte team has developed these materials, we’ve aimed to provide resources for both guided (during the workshop) and self-led learning. We assume basic familiarity with:\n\nWorking with data in R\nIntroductory Statistics\n\nWe’ve divided the materials into subject matter modules or units. Each module typically consists of four kinds of materials:\n\nslides with presentation of materials\nlabs/hands-on materials to allow you to practice material in a practical way\ndata sets to analyze\nsolutions to exercises, when necessary\n\nWe also include links to additional resources/materials/references.\nFor more information about the goals and approach of VectorByte are available at vectorbyte.org."
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "VectorByte Training Materials 2026",
+    "section": "",
+    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
+  },
+  {
+    "objectID": "materials.html#pre-work-and-set-up",
+    "href": "materials.html#pre-work-and-set-up",
+    "title": "VectorByte Training Materials 2026",
+    "section": "",
+    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
+  },
+  {
+    "objectID": "materials.html#live-workshop-materials",
+    "href": "materials.html#live-workshop-materials",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Live Workshop Materials",
+    "text": "Live Workshop Materials\nComing Soon"
+  },
+  {
     "objectID": "VB_intro_to_traits.html#introduction-to-traits---objectives",
     "href": "VB_intro_to_traits.html#introduction-to-traits---objectives",
     "title": "Introduction to Traits",
@@ -110,271 +439,5 @@
     "title": "Introduction to Traits",
     "section": "Model Validation",
     "text": "Model Validation\nData from the field or other experiments can help validate estimates."
-  },
-  {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "VectorByte Training Materials 2026",
-    "section": "",
-    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
-  },
-  {
-    "objectID": "materials.html#pre-work-and-set-up",
-    "href": "materials.html#pre-work-and-set-up",
-    "title": "VectorByte Training Materials 2026",
-    "section": "",
-    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
-  },
-  {
-    "objectID": "materials.html#live-workshop-materials",
-    "href": "materials.html#live-workshop-materials",
-    "title": "VectorByte Training Materials 2026",
-    "section": "Live Workshop Materials",
-    "text": "Live Workshop Materials\nComing Soon"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About the VectorByte Training Materials 2026",
-    "section": "",
-    "text": "As the VectorByte team has developed these materials, we’ve aimed to provide resources for both guided (during the workshop) and self-led learning. We assume basic familiarity with:\n\nWorking with data in R\nIntroductory Statistics\n\nWe’ve divided the materials into subject matter modules or units. Each module typically consists of four kinds of materials:\n\nslides with presentation of materials\nlabs/hands-on materials to allow you to practice material in a practical way\ndata sets to analyze\nsolutions to exercises, when necessary\n\nWe also include links to additional resources/materials/references.\nFor more information about the goals and approach of VectorByte are available at vectorbyte.org."
-  },
-  {
-    "objectID": "schedule2026.html",
-    "href": "schedule2026.html",
-    "title": "2026 Training Schedule",
-    "section": "",
-    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
-  },
-  {
-    "objectID": "schedule2026.html#pre-workshop",
-    "href": "schedule2026.html#pre-workshop",
-    "title": "2026 Training Schedule",
-    "section": "",
-    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
-  },
-  {
-    "objectID": "schedule2026.html#arrival-29-may-2026",
-    "href": "schedule2026.html#arrival-29-may-2026",
-    "title": "2026 Training Schedule",
-    "section": "Arrival: 29 May 2026",
-    "text": "Arrival: 29 May 2026\n\n\n\nTime\nActivity\n\n\n\n\n\nArrival"
-  },
-  {
-    "objectID": "schedule2026.html#day-1-30-may-2026-0830---1730",
-    "href": "schedule2026.html#day-1-30-may-2026-0830---1730",
-    "title": "2026 Training Schedule",
-    "section": "Day 1: 30 May 2026 (08:30 - 17:30)",
-    "text": "Day 1: 30 May 2026 (08:30 - 17:30)\nMorning activities will be joint with the EEID workshop\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview and Introduction (with EEID)\n\n\n\n9:00\nIntro to GitHub through R (with EEID)\n\n\n\n10:30\nBreak\n\n\n\n10:45\nData Management in R (with EEID)\n\n\n\n12:00\nLunch\n\n\n\n13:00\nIntroduction to Traits, the VecTraits Database, AI assisted digitization\n\n\n\n15:00\nBreak\n\n\n\n15:30\nSimple trait analysis pipeline with VecTraits and R"
-  },
-  {
-    "objectID": "schedule2026.html#day-2-31-may-2026-0830---1730",
-    "href": "schedule2026.html#day-2-31-may-2026-0830---1730",
-    "title": "2026 Training Schedule",
-    "section": "Day 2: 31 May 2026 (08:30 - 17:30)",
-    "text": "Day 2: 31 May 2026 (08:30 - 17:30)\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview of the day\n\n\n\n9:00\nIntro to time dependent data and VecDyn\n\n\n\n10:30\nBreak\n\n\n\n11:00\nEnvironmental covariates for time and space dependent data\n\n\n\n12:00\nLunch\n\n\n\n13:00\nSimple vector dynamic analysis pipeline with VecDyn and R\n\n\n\n14:30\nBreak\n\n\n\n15:00\nBegin Projects\n\n\n\n17:00\nLightning talks"
-  },
-  {
-    "objectID": "schedule2026.html#day-3-1-june-2026-0830---1200",
-    "href": "schedule2026.html#day-3-1-june-2026-0830---1200",
-    "title": "2026 Training Schedule",
-    "section": "Day 3: 1 June 2026 (08:30 - 12:00)",
-    "text": "Day 3: 1 June 2026 (08:30 - 12:00)\n\n\n\nTime.\nActivity\nMaterials\n\n\n\n\n8:30\nProject Tim\n\n\n\n10:30\nBreak\n\n\n\n11:00\nPresent Projects (with EEID)\n\n\n\n12:00\nLunch"
-  },
-  {
-    "objectID": "schedule2026.html#post-workshop",
-    "href": "schedule2026.html#post-workshop",
-    "title": "2026 Training Schedule",
-    "section": "Post-workshop",
-    "text": "Post-workshop\nEnjoy using these new techniques and databases!"
-  },
-  {
-    "objectID": "schedule2026_draft.html",
-    "href": "schedule2026_draft.html",
-    "title": "2026 Training Schedule",
-    "section": "",
-    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
-  },
-  {
-    "objectID": "schedule2026_draft.html#pre-workshop",
-    "href": "schedule2026_draft.html#pre-workshop",
-    "title": "2026 Training Schedule",
-    "section": "",
-    "text": "Information about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
-  },
-  {
-    "objectID": "schedule2026_draft.html#arrival-29-may-2026",
-    "href": "schedule2026_draft.html#arrival-29-may-2026",
-    "title": "2026 Training Schedule",
-    "section": "Arrival: 29 May 2026",
-    "text": "Arrival: 29 May 2026\n\n\n\nTime\nActivity\n\n\n\n\n\nArrival"
-  },
-  {
-    "objectID": "schedule2026_draft.html#day-1-30-may-2026-0830---1730",
-    "href": "schedule2026_draft.html#day-1-30-may-2026-0830---1730",
-    "title": "2026 Training Schedule",
-    "section": "Day 1: 30 May 2026 (08:30 - 17:30)",
-    "text": "Day 1: 30 May 2026 (08:30 - 17:30)\nMorning activities will be joint with the EEID workshop\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview and Introduction (with EEID)\n\n\n\n9:00\nIntro to GitHub through R (with EEID)\n\n\n\n10:30\nBreak\n\n\n\n10:45\nData Management in R (with EEID)\n\n\n\n12:00\nLunch\n\n\n\n13:00\nIntroduction to Traits, the VecTraits Database, AI assisted digitization\n\n\n\n15:00\nBreak\n\n\n\n15:30\nSimple trait analysis pipeline with VecTraits and R"
-  },
-  {
-    "objectID": "schedule2026_draft.html#day-2-31-may-2026-0830---1730",
-    "href": "schedule2026_draft.html#day-2-31-may-2026-0830---1730",
-    "title": "2026 Training Schedule",
-    "section": "Day 2: 31 May 2026 (08:30 - 17:30)",
-    "text": "Day 2: 31 May 2026 (08:30 - 17:30)\n\n\n\n\n\n\n\n\nTime\nActivity\nMaterials\n\n\n\n\n8:30\nOverview of the day\n\n\n\n9:00\nIntro to time dependent data and VecDyn\n\n\n\n10:30\nBreak\n\n\n\n11:00\nEnvironmental covariates for time and space dependent data\n\n\n\n12:00\nLunch\n\n\n\n13:00\nSimple vector dynamic analysis pipeline with VecDyn and R\n\n\n\n14:30\nBreak\n\n\n\n15:00\nBegin Projects\n\n\n\n17:00\nLightning talks"
-  },
-  {
-    "objectID": "schedule2026_draft.html#day-3-1-june-2026-0830---1200",
-    "href": "schedule2026_draft.html#day-3-1-june-2026-0830---1200",
-    "title": "2026 Training Schedule",
-    "section": "Day 3: 1 June 2026 (08:30 - 12:00)",
-    "text": "Day 3: 1 June 2026 (08:30 - 12:00)\n\n\n\nTime.\nActivity\nMaterials\n\n\n\n\n8:30\nProject Tim\n\n\n\n10:30\nBreak\n\n\n\n11:00\nPresent Projects (with EEID)\n\n\n\n12:00\nLunch"
-  },
-  {
-    "objectID": "schedule2026_draft.html#post-workshop",
-    "href": "schedule2026_draft.html#post-workshop",
-    "title": "2026 Training Schedule",
-    "section": "Post-workshop",
-    "text": "Post-workshop\nEnjoy using these new techniques and databases!"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to the 2026 VectorByte Training Workshop",
-    "section": "",
-    "text": "Check out our about and schedule pages to continue.\nInformation about pre-workshop preparation – including software installation, expectations for what you should already be familiar with, and review materials – is available in the pre-work portion of the materials page."
-  },
-  {
-    "objectID": "VB_IntroData.html#why-is-datacode-curation-and-management-important",
-    "href": "VB_IntroData.html#why-is-datacode-curation-and-management-important",
-    "title": "VectorByte Methods Training",
-    "section": "Why is Data/Code Curation and Management Important?",
-    "text": "Why is Data/Code Curation and Management Important?\nIn order for analyses to be repeatable, data and code first must:\n\nproperly organized and documented\naccessibly stored and findable, and\nideally, made available to others.\n\nData obtained with support from public funds (such as NSF or NIH) are usually required to be made available to other scientists and the public."
-  },
-  {
-    "objectID": "VB_IntroData.html#steps-to-data-management",
-    "href": "VB_IntroData.html#steps-to-data-management",
-    "title": "VectorByte Methods Training",
-    "section": "Steps to Data Management",
-    "text": "Steps to Data Management\nThere are many steps to obtaining and effectively managing data (right, below). Today we talk about important components that fit in areas (ii) to (v).\n\n\n\n\nManage Raw Data\nCheck Data\nStore and Curate Data"
-  },
-  {
-    "objectID": "VB_IntroData.html#manage-raw-data",
-    "href": "VB_IntroData.html#manage-raw-data",
-    "title": "VectorByte Methods Training",
-    "section": "1. Manage Raw Data",
-    "text": "1. Manage Raw Data\nSo you’ve got some “raw” data:\n\nhandwritten notes\nautomatic data logger (this includes sequencing machines, temperature monitors, etc.)\noutput from simulation\n\nThese data should be transferred to an organized electronic format and checked as soon as possible after collection."
-  },
-  {
-    "objectID": "VB_IntroData.html#what-electronic-formats",
-    "href": "VB_IntroData.html#what-electronic-formats",
-    "title": "VectorByte Methods Training",
-    "section": "What Electronic Formats?",
-    "text": "What Electronic Formats?\nIt’s often easiest to input as a table into a spreadsheet.\n\nBut don’t leave it simply as a spreadsheet – save it to a non-proprietary format, like a comma-delimited file (csv)."
-  },
-  {
-    "objectID": "VB_IntroData.html#how-should-data-be-recorded",
-    "href": "VB_IntroData.html#how-should-data-be-recorded",
-    "title": "VectorByte Methods Training",
-    "section": "How should data be recorded",
-    "text": "How should data be recorded\n\n\nInput it in the least compact form that you can – you don’t want to lose information!\n\n\nUsually this means that you want your data to be in a “long” format – but what does this mean?"
-  },
-  {
-    "objectID": "VB_IntroData.html#long-vs.-wide",
-    "href": "VB_IntroData.html#long-vs.-wide",
-    "title": "VectorByte Methods Training",
-    "section": "Long vs. Wide",
-    "text": "Long vs. Wide\nWide formats compress multiple individual samples into single rows instead of using a row for each sampling unit:\n\n\n\n\nWIDE\n\n\n\n\nType\n#\nWeight(g)\n\n\n\n\nCarrots\n10\n35.1\n\n\nPeppers\n30\n30.4\n\n\nBroccoli\n5\n200.4\n\n\n\n\n\n\n\nLONG\n\n\n\n\nType\nweight\nunits\n\n\n\n\nCarrot\n2.3\ng\n\n\nPepper\n3.2\ng\n\n\nBroccoli\n5.8\ng\n\n\nPepper\n2.2\ng\n\n\nCarrot\n1.5\ng"
-  },
-  {
-    "objectID": "VB_IntroData.html#metadata",
-    "href": "VB_IntroData.html#metadata",
-    "title": "VectorByte Methods Training",
-    "section": "Metadata",
-    "text": "Metadata"
-  },
-  {
-    "objectID": "VB_IntroData.html#what-is-in-a-row-of-data",
-    "href": "VB_IntroData.html#what-is-in-a-row-of-data",
-    "title": "VectorByte Methods Training",
-    "section": "What is in a “row” of data?",
-    "text": "What is in a “row” of data?\n\nunits separate from measured values\ndates\nindividual measurements when possible\nseparate columns for all covariates with units and settings recorded separately."
-  },
-  {
-    "objectID": "VB_IntroData.html#examples-from-vectorbyte",
-    "href": "VB_IntroData.html#examples-from-vectorbyte",
-    "title": "VectorByte Methods Training",
-    "section": "Examples from VectorByte",
-    "text": "Examples from VectorByte"
-  },
-  {
-    "objectID": "VB_IntroData.html#check-your-data",
-    "href": "VB_IntroData.html#check-your-data",
-    "title": "VectorByte Methods Training",
-    "section": "2. Check Your Data",
-    "text": "2. Check Your Data\nAlmost always errors are made when data are being collected or inputted.\n\nDecimal points moved\nDigits switched\nMissing data are not properly encoded\nInstrument errors\nSkip some data"
-  },
-  {
-    "objectID": "VB_IntroData.html#store-and-curate-data",
-    "href": "VB_IntroData.html#store-and-curate-data",
-    "title": "VectorByte Methods Training",
-    "section": "3. Store and Curate Data",
-    "text": "3. Store and Curate Data\n\n\nTraditionally, the preferred medium for a “permanent” archival copy is acid-free paper. It has some important advantages:\n\nnon-proprietary format\ndoesn’t need electricity to maintain\nproperly stored, can last hundreds of years.\n\n\n\n\n\nThat’s not the case with many electronic formats…"
-  },
-  {
-    "objectID": "VB_IntroData.html#data-storage",
-    "href": "VB_IntroData.html#data-storage",
-    "title": "VectorByte Methods Training",
-    "section": "Data Storage",
-    "text": "Data Storage\nElectronic storage requires updating to new hardware every 5-10 years. Storing data in the cloud outsources much of this effort.\nCloud storage of your data (and your code/ analyses) on a remote server in addition to your local machine is a really good idea.\nFurther, versioning systems let you keep track of changes and recover old versions of your files (in case you mess up and write over them). This includes GIT (that we’ve already seen)."
-  },
-  {
-    "objectID": "VB_IntroData.html#fair-data-practices",
-    "href": "VB_IntroData.html#fair-data-practices",
-    "title": "VectorByte Methods Training",
-    "section": "FAIR Data Practices",
-    "text": "FAIR Data Practices\nOne of the most important practices is to ensure that your data will be preserved and eventually made accessible to others. In particular we want our data to be FAIR:\n\nFindable\nAccessible\nInteroperable\nReproducible"
-  },
-  {
-    "objectID": "materials_draft.html",
-    "href": "materials_draft.html",
-    "title": "VectorByte Training Materials 2026",
-    "section": "",
-    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
-  },
-  {
-    "objectID": "materials_draft.html#pre-work-and-set-up",
-    "href": "materials_draft.html#pre-work-and-set-up",
-    "title": "VectorByte Training Materials 2026",
-    "section": "",
-    "text": "Before attending the workshop, we request that you read the following three papers, as they will provide much of the conceptual framework that we rely on:\n\nMIReAD, a minimum information standard for reporting arthropod abundance data\nMIReVTD, a minimum information standard for reporting vector trait data\nThe Role of Vector Trait Variation in Vector-Borne Disease Dynamics\n\n \n\n\n\n\nWe will be using R for all data manipulation and analyses/model fitting. Any operating system (Windows, Mac, Linux) will do, as long as you have R (version 3.6 or higher) installed.\nYou may use any IDE/ GUI for R (VScode, RStudio, Emacs, etc). For most people, RStudio is a good option. Whichever one you decide to use, please make sure it is installed and tested before the workshop.\nWe also host all materials on GitHub, and all students should have a GitHub account.\n\n \n\n\n\nWe are assuming familiarity with R basics as well as at least introductory statistics, including up through simple linear regression. If you would like materials to review, we recommend the following from The Multilingual Quantitative Biologist.\n\nR: Biological Computing in R Chapter.\nBasic statistics, through linear models: The Multilingual Quantitative Biologist - Basic Data Analyses and Statistics."
-  },
-  {
-    "objectID": "materials_draft.html#live-workshop-materials",
-    "href": "materials_draft.html#live-workshop-materials",
-    "title": "VectorByte Training Materials 2026",
-    "section": "Live Workshop Materials",
-    "text": "Live Workshop Materials"
-  },
-  {
-    "objectID": "materials_draft.html#introduction-to-the-workshops",
-    "href": "materials_draft.html#introduction-to-the-workshops",
-    "title": "VectorByte Training Materials 2026",
-    "section": "Introduction to the Workshops",
-    "text": "Introduction to the Workshops\n\nLecture Slides – coming soon"
-  },
-  {
-    "objectID": "materials_draft.html#introduction-to-data-types-and-sources",
-    "href": "materials_draft.html#introduction-to-data-types-and-sources",
-    "title": "VectorByte Training Materials 2026",
-    "section": "Introduction to Data Types and Sources",
-    "text": "Introduction to Data Types and Sources\n\nLecture Slides"
-  },
-  {
-    "objectID": "materials_draft.html#introduction-to-traits",
-    "href": "materials_draft.html#introduction-to-traits",
-    "title": "VectorByte Training Materials 2026",
-    "section": "Introduction to Traits",
-    "text": "Introduction to Traits\n\nLecture Slides"
   }
 ]

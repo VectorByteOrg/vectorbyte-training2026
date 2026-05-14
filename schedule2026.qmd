@@ -60,7 +60,7 @@ Morning activities will be joint with the EEID workshop
 
 | Time.  | Activity                       | Materials |
 |--------|--------------------------------|-----------|
-| 8:30   | Project Tim           |           |
+| 8:30   | Project Time           |           |
 | 10:30  | Break                 |           |
 | 11:00  | Present Projects (*with EEID*) |           |
 | 12:00  | Lunch     |           |

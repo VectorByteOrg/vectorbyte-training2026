@@ -107,11 +107,11 @@ This year, we've integrated them further to allow more opportunities for network
 **Saturday/Sunday** (8:30am - 5:30pm): 
 
   - Session 1 (joint on Sat.)
-  - Break (joint)
+  - BREAK (joint)
   - Session 2 (joint on Sat.)
-  - Lunch (joint)
+  - LUNCH (joint)
   - Session 3 (divided)
-  - Break (joint)
+  - BREAK (joint)
   - Session 4 (divided)
 
 ::: 
@@ -127,9 +127,9 @@ This year, we've integrated them further to allow more opportunities for network
 **Monday** (8:30am - 1:00pm): 
 
   - Session 1 (divided)
-  - Break (joint)
+  - BREAK (joint)
   - Session 2 -- Presentations (joint)
-  - Lunch (joint)
+  - LUNCH (joint)
 
 More detailed schedules are on the respective training websites.
 
@@ -156,7 +156,7 @@ Interested in learning more about data resources for VBD systems or more network
 Sign up for the ***VectorByte Showcase***:
 
 - 1:30 - 4:00pm
-- Steger Auditorium and Lobby (where we are now)
+- Steger Auditorium (where we are now) and Lobby 
 - Food and networking
 
 ## Questions?

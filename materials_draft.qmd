@@ -54,17 +54,22 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 -   [Lecture Slides](VB_Welcome.qmd)
 
-<br> <br>
+<br> 
 
 
 ## Introduction to Data Types and Sources
 
 - [Lecture Slides](VB_IntroData.qmd)
 
-<br> <br>
+<br> 
 
 ## Introduction to Traits
 
 - [Lecture Slides](VB_intro_to_traits.qmd)
 
+<br> 
 
+## Fitting TPCs using NLLS
+
+- [Practical](vectorByte2026_NLLS.qmd)
+- [Dataset access code](code/VecTraits_Dataset_Access.R)

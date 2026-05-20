@@ -1,8 +1,14 @@
 ---
-title: "Fitting Thermal Performance Curves via Non-linear Least Squares"
-author: "Alicia Surratt"
+title: "VectorByte Training: Fitting Thermal Performance Curves via Non-linear Least Squares"
+author:
+  - name: 
+      given: Alicia
+      family: Surratt
+    affiliation: Virginia Tech and VectorByte
+citation: true
+date: 2026-05-29
+date-format: long
 format: html
-editor: visual
 error: true
 bibliography: nlsRef.bib
 ---
@@ -13,7 +19,7 @@ bibliography: nlsRef.bib
 
 A thermal performance curve (TPC) is any continuous function that maps the response of an ectothermic organism to temperature. Typically, they are unimodal and asymmetric (though exceptions exist to every rule). Importantly, they are almost always *non-linear* when a broad enough range of temperatures is considered.
 
-![Figure credit: Krenek et al., 2012](images/tpcGeneral.webp){width="506"}
+![Figure credit: Krenek et al., 2012](graphics/tpcGeneral.webp){width="506"}
 
 We are often interested in extracting certain values of interest from a TPC. These include the maximum critical temperature ($CT_{min}$), the minimum critical temperature ($CT_{min}$), the optimal temperature ($T_{opt}$), and the thermal breadth. These are defined below:
 
@@ -31,7 +37,7 @@ Because the responses of an ectotherm across temperatures are frequently non-lin
 ::: callout-tip
 ## A Note About Linear and Non-linear Models
 
-Linear models can still accommodate curved responses, like in the case of polynomial regression ($y = \beta_0 + \beta_1x + \beta_2x^2 + \epsilon_i$). However, we can often get a better fit for certain curvatures using non-linear models. A *non-linear* model is one that is not linear in the *parameters*, not necessarily in the variables. For example, a model where a parameter shows up as an exponent in the equation is non-linear (e.g.$y = \beta_0x^{\beta2} + \epsilon_i$).
+Linear models can still accommodate curved responses, like in the case of polynomial regression ($y = \beta_0 + \beta_1x + \beta_2x^2 + \epsilon_i$). However, we can often get a better fit for certain curvatures using non-linear models. A *non-linear* model is one that is not linear in the *parameters*, not necessarily in the variables. For example, a model where a parameter shows up as an exponent in the equation is non-linear (e.g. $y = \beta_0x^{\beta2} + \epsilon_i$).
 :::
 
 ### Mechanistic TPCs
@@ -96,10 +102,13 @@ which is just taking the sum of the differences between the actual values and th
 
 Let's visualize how this operates for the simple linear regression model, $y_i = \beta_0 + \beta_1x_i+\epsilon_i$.
 
-```{r}
+```{r, message=FALSE}
 
 library(tidyverse)
 library(rgl)
+```
+
+```{r}
 
 # Put some data in here
 x <- c(1,2,3,4)
@@ -161,7 +170,7 @@ It turns out that this isn't quite as easy in the non-linear parameter space, bu
 
 In the case of linear models, there is only one set of parameter values that produces a minimum SSR value. In the non-linear space, we are not so fortunate. There are often local minima that can "trick" the fitting algorithm into thinking it has found the right fit when there is really a better set of parameters for the data.
 
-![](images/clipboard-2201851640.png){width="526"}
+![](graphics/clipboard-2201851640.png){width="526"}
 
 Since this is the case, we can't use matrix algebra to nicely find the solution. We have to use an iterative grid search approach to find a close-to-optimal least squares solution. The process goes like this:
 
@@ -178,9 +187,9 @@ First, let's bring in some data from VecTraits using the API. We will also use t
 
 This data set contains data on the duration of the juvenile life stage of *Aedes aegypti* mosquitoes. Inverting these data (1/ development time) produces a development rate, which is what we will model.
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # Run the API file to load in all the functions we need
-source("VecTraits_Dataset_Access.R")
+source("code/VecTraits_Dataset_Access.R")
 
 mosquito_df <- getDataset(578) #this returns a list of data frames in case we ask for several data sets.
 df <- mosquito_df[[1]] #we can extract our data frame like this
@@ -345,7 +354,7 @@ confint(briere)
 
 On another level, we may want to be able to visualize the uncertainty across the whole TPC. This requires bootstrapping. Bootstrapping involved re-sampling the data with replacement and re-fitting the model to the samples to be able to generate multiple predictions for each data point (one from each of the re-fitted models with their unique parameter estimates). The figure below provides a visual of this process.
 
-![](images/bootstrapping.png){width="556"}
+![](graphics/bootstrapping.png){width="556"}
 
 Let's try it on our model and visualize the results.
 
@@ -421,7 +430,7 @@ BUT we run into a few BIG problems.
 
 We can do this kind of fitting in the Bayesian framework, and this is what the MiREVTD team did. This was the result they got:
 
-![](images/meanVsInd.png){width="571"}
+![](graphics/meanVsInd.png){width="571"}
 
 See how the uncertainty is much larger for the averages? The fitted curve is not quite as accurate either. [**The takeaway is that, when you have the opportunity to publish your data, it is important to make the full data set available rather than just the mean values!**]{.mark}
 :::

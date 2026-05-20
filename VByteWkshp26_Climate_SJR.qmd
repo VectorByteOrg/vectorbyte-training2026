@@ -160,7 +160,7 @@ Seems to get released by calendar year (up to end of last year)
 ------------------------------------------------------------------------
 
 
-# Section 5: Last notes and caveats
+# Section 3: Last notes and caveats
 
 ### EO vs Weather station data
 

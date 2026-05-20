@@ -158,6 +158,17 @@ Limitations: It is just a model (pulling in all the best station data available 
 Seems to get released by calendar year (up to end of last year)
 
 ------------------------------------------------------------------------
+
+EXCERCISE! 
+Head to VecDyn, find a dataset within the USA
+What is its location?
+What is the date range and frequency of data? 
+
+Head to Daymet and pull the corresponding temperature and precipitation 
+
+Plot these together in rough plots in R. 
+
+
 #Section 3: Going Global - ERA-5 access
 
 ERA 5 is a global reanalysis product served by Copernicus, the European Center for Medium Range Weather Forecasts (ECMRWF) - The CDS - Climate Data Store on Copernicus holds the ERA5 products. https://cds.climate.copernicus.eu/datasets

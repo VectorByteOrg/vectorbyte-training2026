@@ -158,13 +158,22 @@ Limitations: It is just a model (pulling in all the best station data available 
 Seems to get released by calendar year (up to end of last year)
 
 ------------------------------------------------------------------------
+#Section 3: Going Global - ERA-5 access
+
+ERA 5 is a global reanalysis product served by Copernicus, the European Center for Medium Range Weather Forecasts (ECMRWF) - The CDS - Climate Data Store on Copernicus holds the ERA5 products. https://cds.climate.copernicus.eu/datasets
+
+In this section, we introduce you to a vignette to access ERA 5 that has been aggregated at admin level scales for the globe by projects related to the UK VBD Hub; using this derived dataset obviates the need to acquire and use an API Key from Copernicus. 
+
+Alternately, we will share a link to R code demonstrating how to use API keys in your data queries of Copernicus directly
+
+Of key importance, caveats about ERA 5 (Sadie) - and areaData (and assoc_ad from Francis) is not a point based query, although you can query using Lat/Lon. Caveat emptor, you are querying an aggregated dataset, not pixel-level. 
 
 
-# Section 3: Additional climate resources and caveats
+# Section 4: Additional climate resources and caveats
 
 ### EO vs Weather station data
 
-EO - Earth Observation - primarily satellite data - from 'looking down' onto things (also called EOS data - earth observation system data
+EO - Earth Observation - primarily satellite data - from 'looking down' onto things (also called EOS data - earth observation system data)
 
 LST - land surface temperature is reflectance converted to temperature via algorithms
 

@@ -481,5 +481,103 @@
     "title": "Introduction to Traits",
     "section": "Model Validation",
     "text": "Model Validation\nData from the field or other experiments can help validate estimates."
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html",
+    "href": "VByteWkshp26_Climate_SJR.html",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "",
+    "text": "Before you dive into products, or just do what someone else did, think about the biological mechanisms you might be exploring. Think about what meteorological or climate data corresponds to the mechanism.\nExample: mosquitoes (pick your species of choice)\n\nWhen does temperature limit your mosquito of interest, and how?\n\nIs minimum temperature likely to be most important?\nWhat about maximum temperature?\n\n\nCreate reasonable hypotheses for mechanistic processes\nThink about how these differ among temperate vs. tropical vs. boreal\n\n\n\n\nYou’ve decided minimum temperature will be important, but when and for how long?\nFor example, think about temporal scale:\n\nDo you need to know the temperature of the coldest month? Minimum temperature in an hour in a day?\nFirst month in which a daily minimum temperature is exceeded? (Thresholds)\nAverage v. cumulative measures (think temperature and precipitation)\n\nWe also think about spatial scale. A bit of Tobler’s law –- how far does the effect carry (derived from the ‘law’ that things that are closer are more similar). So we think about various “geographic” considerations for met/climate variables:\n\nIs the nearest weather station useful for your organism of interest, is interpolation of data reflecting the likely response at the location?\nWhere are measurements made?\nIs ground surface temperature equivalent to air temperature, and when does it matter?\nDoes rain absorb into the surface or sit on it?\n\n\n\n\nOften we’re going to need to focus on making the best of things.\nUnless you have a weather station logging your variables of interest next to your trapping/collecting sites, you will use proxies in some way.\n\nIf your data are time series, you need regularly spaced, consistent observation or modeled products\nMost ‘weather’ products are modeled (interpolated) in some way\n\nRead the documentation carefully, and know what it is\nImperfect is often still useful, but may have important limitations\n\nEOS products are also modeled, and spatiotemporal aggregations will also determine their utility\nBeware of apparent consistency\n\nToday, we will be exploring the following:\n\nPoint extraction of Daymet data\n\nUseful for USA-based studies\nHigh frequency data availability\nConsistency already worked out for you.\n\n\nBefore you even start\n\nWhat is the location of your vector time-series?\nWe assume absolutely perfect data, and chances are you have a coordinate pair\nWhat projection is it in?\nWhose GPS unit was it reported from?\nHow accurate or precise is it?\n\nThrow it on Google maps and make sure it seems to be where you think it is."
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#choice",
+    "href": "VByteWkshp26_Climate_SJR.html#choice",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "",
+    "text": "Before you dive into products, or just do what someone else did, think about the biological mechanisms you might be exploring. Think about what meteorological or climate data corresponds to the mechanism.\nExample: mosquitoes (pick your species of choice)\n\nWhen does temperature limit your mosquito of interest, and how?\n\nIs minimum temperature likely to be most important?\nWhat about maximum temperature?\n\n\nCreate reasonable hypotheses for mechanistic processes\nThink about how these differ among temperate vs. tropical vs. boreal"
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#scale",
+    "href": "VByteWkshp26_Climate_SJR.html#scale",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "",
+    "text": "You’ve decided minimum temperature will be important, but when and for how long?\nFor example, think about temporal scale:\n\nDo you need to know the temperature of the coldest month? Minimum temperature in an hour in a day?\nFirst month in which a daily minimum temperature is exceeded? (Thresholds)\nAverage v. cumulative measures (think temperature and precipitation)\n\nWe also think about spatial scale. A bit of Tobler’s law –- how far does the effect carry (derived from the ‘law’ that things that are closer are more similar). So we think about various “geographic” considerations for met/climate variables:\n\nIs the nearest weather station useful for your organism of interest, is interpolation of data reflecting the likely response at the location?\nWhere are measurements made?\nIs ground surface temperature equivalent to air temperature, and when does it matter?\nDoes rain absorb into the surface or sit on it?"
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#acquisition",
+    "href": "VByteWkshp26_Climate_SJR.html#acquisition",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "",
+    "text": "Often we’re going to need to focus on making the best of things.\nUnless you have a weather station logging your variables of interest next to your trapping/collecting sites, you will use proxies in some way.\n\nIf your data are time series, you need regularly spaced, consistent observation or modeled products\nMost ‘weather’ products are modeled (interpolated) in some way\n\nRead the documentation carefully, and know what it is\nImperfect is often still useful, but may have important limitations\n\nEOS products are also modeled, and spatiotemporal aggregations will also determine their utility\nBeware of apparent consistency\n\nToday, we will be exploring the following:\n\nPoint extraction of Daymet data\n\nUseful for USA-based studies\nHigh frequency data availability\nConsistency already worked out for you.\n\n\nBefore you even start\n\nWhat is the location of your vector time-series?\nWe assume absolutely perfect data, and chances are you have a coordinate pair\nWhat projection is it in?\nWhose GPS unit was it reported from?\nHow accurate or precise is it?\n\nThrow it on Google maps and make sure it seems to be where you think it is."
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#choose-a-location",
+    "href": "VByteWkshp26_Climate_SJR.html#choose-a-location",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "Choose a location",
+    "text": "Choose a location\nPut your point in Google maps, or choose an address. For example:\n29.6557572689658, -82.32141674790877\nWhat is this?\nThis is my house – 405 NE 5th Avenue, Gainesville, FL.\n\nRight click to get coordinates\n\nEarthdata profile with NASA – make yourself an account - https://urs.earthdata.nasa.gov/"
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#then-navigate-to-the-daymet-site",
+    "href": "VByteWkshp26_Climate_SJR.html#then-navigate-to-the-daymet-site",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "Then navigate to the DAYMET site",
+    "text": "Then navigate to the DAYMET site"
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#locate-the-single-pixel-extraction-tool",
+    "href": "VByteWkshp26_Climate_SJR.html#locate-the-single-pixel-extraction-tool",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "Locate the Single Pixel Extraction Tool",
+    "text": "Locate the Single Pixel Extraction Tool"
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#input-your-coordinates-or-navigate-to-the-location-you-want-on-their-map",
+    "href": "VByteWkshp26_Climate_SJR.html#input-your-coordinates-or-navigate-to-the-location-you-want-on-their-map",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "Input your coordinates, or navigate to the location you want on their map",
+    "text": "Input your coordinates, or navigate to the location you want on their map\n\nYou will see lots of choices of variables - DAYL - day length, PRCP - precip, etc. Use the website itself and the references to publications of the model for this product to fully understand what the variables are and mean - remember, a daily minimum could mean the lowest recording in a given hour, or may have a different value for day and night within a 24 hour period.\nChoose the timeline you are interested in to select your date range. Remember, at a single pixel, “accidentally” downloading too many variables or too many years is just a bigger text file, but not huge. If you are downloading modeled climate data across a region and make this sort of mistake in requests, you may either be waiting a while, or end up with unwieldy huge files. You can always return and re-download.\nDON’T OPEN YOUR DATA IN EXCEL – demo only for this workshop!\nAnnoying/informational header lines will need to be examined and you can determine how to format your data from there.\n\nUser choice about how to wrangle it into R\nBe super careful about csv formats if you open in Excel, but you probably know this at this stage in your career. Generally, don’t. Just pull it into R and chop off rows or subset what you need, check the classes of each variable field you’ll use, make sure the units of measurement (temperature, VP, etc) are as you expect, and enjoy!\nLast notes for the DAYMET data pull\nFor a single point, the question about what the projection is in the Daymet model should be ok, because you are not overlaying rasters, and you can see it all on google maps, both before and during your extraction\nIf you are doing this for multiple points, DEFINITELY THINK ABOUT THE PROJECTION\n\nPause – were you able to navigate this so far?\nDaymet is a bit deluxe – high resolution (pixels are small), high frequency (daily availability). Easy UIs for data extraction\nLimitations: It is just a model (pulling in all the best station data available across multiple agencies) Only continental North America (plus HI from 1980 and PR from 1950)\nSeems to get released by calendar year (up to end of last year)"
+  },
+  {
+    "objectID": "VByteWkshp26_Climate_SJR.html#excercise",
+    "href": "VByteWkshp26_Climate_SJR.html#excercise",
+    "title": "VectorByte Methods Training: ‘Climate’ variables for time-series analyses",
+    "section": "EXCERCISE!",
+    "text": "EXCERCISE!\nHead to VecDyn, find a dataset within the USA What is its location? What is the date range and frequency of data?\nHead to Daymet and pull the corresponding temperature and precipitation\nPlot these together in rough plots in R."
+  },
+  {
+    "objectID": "materials_draft.html#intro-to-the-vectraits-database-and-ai-assisted-digitization-pipeline",
+    "href": "materials_draft.html#intro-to-the-vectraits-database-and-ai-assisted-digitization-pipeline",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Intro to the VecTraits Database and AI assisted digitization pipeline",
+    "text": "Intro to the VecTraits Database and AI assisted digitization pipeline\n\nComing Soon!"
+  },
+  {
+    "objectID": "materials_draft.html#simple-tpc-fitting-pipeline-using-nlls",
+    "href": "materials_draft.html#simple-tpc-fitting-pipeline-using-nlls",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Simple TPC fitting pipeline using NLLS",
+    "text": "Simple TPC fitting pipeline using NLLS\n\nPractical\nDataset access code"
+  },
+  {
+    "objectID": "materials_draft.html#time-dependent-data-and-vecdyn",
+    "href": "materials_draft.html#time-dependent-data-and-vecdyn",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Time Dependent Data and VecDyn",
+    "text": "Time Dependent Data and VecDyn\n\nComing Soon!"
+  },
+  {
+    "objectID": "materials_draft.html#environmental-covariates-for-time-and-space-dependent-data",
+    "href": "materials_draft.html#environmental-covariates-for-time-and-space-dependent-data",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Environmental covariates for time and space dependent data",
+    "text": "Environmental covariates for time and space dependent data\n\nGuided Introduction"
+  },
+  {
+    "objectID": "materials_draft.html#simple-time-dependent-data-pipeline",
+    "href": "materials_draft.html#simple-time-dependent-data-pipeline",
+    "title": "VectorByte Training Materials 2026",
+    "section": "Simple Time-dependent data pipeline",
+    "text": "Simple Time-dependent data pipeline\n-Coming Soon!"
   }
 ]

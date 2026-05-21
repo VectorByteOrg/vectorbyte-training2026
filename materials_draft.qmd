@@ -69,7 +69,34 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 <br> 
 
-## Fitting TPCs using NLLS
+## Intro to the VecTraits Database and AI assisted digitization pipeline
+
+- [Coming Soon!]()
+
+<br>
+
+## Simple TPC fitting pipeline using NLLS
 
 - [Practical](vectorByte2026_NLLS.qmd)
 - [Dataset access code](code/VecTraits_Dataset_Access.R)
+
+<br>
+
+## Time Dependent Data and VecDyn
+
+- [Coming Soon!]()
+
+<br>
+
+## Environmental covariates for time and space dependent data
+
+- [Guided Introduction](VByteWkshp26_Climate_SJR.qmd)
+
+<br>
+
+## Simple Time-dependent data pipeline
+
+-[Coming Soon!]()
+
+<br>
+

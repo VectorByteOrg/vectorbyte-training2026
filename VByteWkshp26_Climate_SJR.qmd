@@ -33,7 +33,7 @@ Create reasonable hypotheses for mechanistic processes
 
 Think about how these differ among temperate vs. tropical vs. boreal
 
-![](images/VB_S1Fig1.jpeg)
+![](graphics/VB_S1Fig1.jpeg)
 
 ## Scale
 
@@ -105,27 +105,27 @@ What is this?
 
 This is my house – 405 NE 5th Avenue, Gainesville, FL.
 
-![](images/VB_S2Fig1.png)
+![](graphics/VB_S2Fig1.png)
 
 **Right click to get coordinates**
 
-![](images/VB_S2Fig2.png)
+![](graphics/VB_S2Fig2.png)
 
 Earthdata profile with NASA – make yourself an account - https://urs.earthdata.nasa.gov/
 
 ## Then navigate to the DAYMET site
 
-![](images/VB_S2Fig3.png)
+![](graphics/VB_S2Fig3.png)
 
-![](images/VB_S2Fig4.png)
+![](graphics/VB_S2Fig4.png)
 
 ## Locate the Single Pixel Extraction Tool
 
-![](images/VB_S2Fig5.png)
+![](graphics/VB_S2Fig5.png)
 
 ## Input your coordinates, or navigate to the location you want on their map
 
-![](images/VB_S2Fig6.png)
+![](graphics/VB_S2Fig6.png)
 
 You will see lots of choices of variables - DAYL - day length, PRCP - precip, etc. Use the website itself and the references to publications of the model for this product to fully understand what the variables are and mean - remember, a daily minimum could mean the lowest recording in a given hour, or may have a different value for day and night within a 24 hour period.
 
@@ -135,7 +135,7 @@ Choose the timeline you are interested in to select your date range. Remember, a
 
 Annoying/informational header lines will need to be examined and you can determine how to format your data from there.
 
-![](images/VB_S2Fig7.png)
+![](graphics/VB_S2Fig7.png)
 
 **User choice about how to wrangle it into R**
 

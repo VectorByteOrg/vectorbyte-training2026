@@ -1,0 +1,319 @@
+---
+subtitle: "VectorByte Methods Training"
+title: "Introduction to Using the VecTraits Database"
+author: "The VectorByte Team (Cat Lippi, PhD, Virginia Tech)"
+title-slide-attributes:
+  data-background-image: graphics/VectorByte-logo_lg.png
+  data-background-size: contain
+  data-background-opacity: "0.2"
+format: revealjs
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = FALSE, 
+                      echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE,
+                      #fig.height=6, 
+                      #fig.width = 1.777777*6,
+                      tidy = FALSE, 
+                      comment = NA, 
+                      highlight = TRUE, 
+                      prompt = FALSE, 
+                      crop = TRUE,
+                      comment = "#>",
+                      collapse = TRUE)
+library(knitr)
+library(kableExtra)
+library(xtable)
+library(viridis)
+
+options(stringsAsFactors=FALSE)
+knit_hooks$set(no.main = function(before, options, envir) {
+    if (before) par(mar = c(4.1, 4.1, 1.1, 1.1))  # smaller margin on top
+})
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(width = 60)
+source("my_knitter.R")
+#library(tidyverse)
+#library(reshape2)
+#theme_set(theme_light(base_size = 16))
+make_latex_decorator <- function(output, otherwise) {
+  function() {
+      if (knitr:::is_latex_output()) output else otherwise
+  }
+}
+insert_pause <- make_latex_decorator(". . .", "\n")
+insert_slide_break <- make_latex_decorator("----", "\n")
+insert_inc_bullet <- make_latex_decorator("> *", "*")
+insert_html_math <- make_latex_decorator("", "$$")
+## classoption: aspectratio=169
+```
+
+## Overview of VectorByte
+
+- VectorBiTE RCN
+- VectorByte $\Rightarrow$ two databases
+- VecDyn and VecTraits
+
+## VecDyn
+
+- Vector abundance
+- Typically field-collected surveillance data
+
+<center>
+![](graphics/Intro_VecTraits_1.jpg)
+</center>
+
+## VecTraits
+
+- Biological trait data
+- Typically results from controlled laboratory experiments
+
+<center>
+![](graphics/Intro_VecTraits_2.jpg)
+</center>
+
+## Vector Trait Data
+
+Vector trait: measurable biological aspects of life-history, behavior, or vector competence
+
+- Because we are dealing with ectothermic vectors, these are often measured against temperature in controlled laboratory environments
+
+<center>
+![](graphics/TPC_6.jpg)
+</center>
+
+## Examples of Studies
+<center>
+![](graphics/Intro_VecTraits_12.jpg)
+</center>
+------------------------------------------------------------------------
+
+<center>
+![](graphics/Intro_VecTraits_13.jpg)
+</center>
+
+## Flexible Framework
+
+- VecTraits template provides a starting point
+- Required fields
+- Commonly used fields
+- Each column has data format requirements (e.g., text, numeric, etc)
+- NO strict format for most study aspects (e.g., units used in study, taxonomy)
+- Can be expanded as needed to accommodate study designs with more interactors
+
+## VecTraits Column Definitions
+
+<center>
+![](graphics/Intro_VecTraits_3.jpg)
+</center>
+
+------------------------------------------------------------------------
+<center>
+![](graphics/Intro_VecTraits_4.jpg)
+</center>
+------------------------------------------------------------------------
+<center>
+![](graphics/Intro_VecTraits_5.jpg)
+</center>
+
+## VecTraits Required Columns
+
+::: columns
+::: {.column width="50%"}
+
+- Minimum columns required for upload
+- These cannot be missing
+- Should include all available data
+- If a required column is missing, file may fail to upload without and error
+
+::: columns
+::: {.column width="50%"}
+
+$\Rightarrow$ Original Trait Value
+$\Rightarrow$ Original Trait Unit
+$\Rightarrow$ Original ID
+$\Rightarrow$ Location
+$\Rightarrow$ Location Date Precision
+$\Rightarrow$ Submitted By
+$\Rightarrow$ Contributor Email
+$\Rightarrow$ Citation
+$\Rightarrow$ Embargo Release
+
+## More Column Definitions
+
+------------------------------------------------------------------------
+
+## Where to Find Template and Instructions
+- Must be logged into VectorByte account
+<center>
+![](graphics/Intro_VecTraits_6.jpg)
+</center>
+
+## VecTraits Template
+
+<center>
+![](graphics/Intro_VecTraits_14.jpg)
+</center>
+
+
+## Formatting Your Data
+
+- Do not need to natively format experimental data for VecTraits
+- Should still adhere to minimum information standard (MIReVTD)
+<center>
+![](graphics/Intro_VecTraits_7.jpg)
+</center>
+
+## Study Traits
+
+- What is the main trait or outcome being measured in your study?
+- Sometimes multiple traits measured at once
+- May require formatting into separate datasets
+
+## Individual Observations vs Grouped Data
+
+- How were data recorded in the study?
+- Individual measurements
+- Group averages (include sample sizes!)
+- Repeated measurements
+
+## Formatting Dates
+
+- Most fields do not have strict formatting guidelines to ensure flexibility
+- Dates are an exception
+- There could be errors due to ambiguity based on localization
+- For example, 5/2/2021 could refer to the 5th of February or the 2nd of May 
+- The desired date format is YYYY-MM-DD 
+- This is the only way to minimize errors and guarantee that dates are recorded as expected
+
+
+## Study Parameters
+
+- Record all controlled aspects of experiment
+- Anything that was manipulated in the study (e.g., temperature, humidity, food concentration)
+- Ideally enough information to replicate experiment
+
+## Other Experimental Stressors
+
+- Some studies may include other factors in addition to trait and main experimental parameters (e.g., temperature)
+- Some common examples are CO2 concentrations or pesticide exposure
+
+## Vector Taxonomy
+
+- Full taxonomic grouping used in study/paper recorded in ‘interactorx’ column
+- This can include information on subspecies, species complex, biotype, etc
+- Dedicated columns for taxonomic groupings (Kingdom, Phylum, Class, Order, Family, Genus, Species)
+- The ‘interactorxspecies’ column should only contain specific epithet
+- Add additional interactors (e.g., interactor2, interactor3…) with associated taxonomy for any other organisms included in study
+- These may include pathogens, hosts, and plants
+
+## Laboratory Conditions
+
+- What factors were controlled in the laboratory?
+- These need to be recorded!
+- Ambient holding temperature, relative humidity, photoperiod, rearing temperature, feeding concentrations, etc.
+- Anything that was not an experimental parameter, but still controlled or recorded as part of the experiment
+
+## Geographic Information
+
+- GPS coordinates or location description of where field-collected specimens orginate
+- DO NOT put location of laboratory or facility where experiment was conducted
+- DO NOT put coordinates for established lab colonies
+- These details can be recorded in other fields
+
+## Additional Interactors
+
+- Interactor1 is typically the vector being studied
+- Additional interactors can be recorded for other named organisms in study
+- The VecTraits template can be expanded to accommodate additional species
+- These may include parasites, hosts, viruses, plant substrate, etc
+
+## Other Columns
+
+## Digitizing Trait Data
+
+- Full data not always available
+- Try to contact study authors
+- Some data and results are only provided in tables and figures
+
+## Digitizing Published Studies
+
+- Check supplemental materials first
+- Consider reaching out to CA
+- Identify where requisite data are in paper
+- Tables are typically easier
+- Make sure to check text!
+- Make sure figures are displaying unique data
+- Check for data that will ensure usability (e.g., sample sizes, error, etc)
+
+## Manual Digitization
+
+- Time consuming
+- May not be practical for large groups
+- Great deal of control
+- Issues with agreement between digitizers
+- More of an issue when digitizing figures
+
+## Figure Digitization Tools
+
+::: columns
+::: {.column width="50%"}
+
+- PlotDigitizer (https://plotdigitizer.com)
+- GraphReader (https://www.graphreader.com)
+- WebPlotDigitizer (https://automeris.io)
+
+<center>
+![](graphics/Intro_VecTraits_8a.jpg)
+</center>
+
+::: columns
+::: {.column width="50%"}
+
+
+![](graphics/Intro_VecTraits_8b.jpg)
+
+![](graphics/Intro_VecTraits_8c.jpg)
+
+
+## Finding Data in VecTraits
+
+<center>
+![](graphics/Intro_VecTraits_9.jpg)
+</center>
+
+------------------------------------------------------------------------
+
+<center>
+![](graphics/Intro_VecTraits_10.jpg)
+</center>
+
+## Downloading Data from VecTraits
+<center>
+![](graphics/Intro_VecTraits_15.jpg)
+</center>
+
+------------------------------------------------------------------------
+
+<center>
+![](graphics/Intro_VecTraits_16.jpg)
+</center>
+
+## Contributing Data to VecTraits
+
+<center>
+![](graphics/Intro_VecTraits_17.jpg)
+</center>
+
+## Citing VecTraits
+
+VecTraits Leah R. Johnson, Lauren Cator, Samuel S. C. Rund, Sadie Ryan, Paul J. Huxley, and Samraat Pawar. 2023. “VecTraits Explorer.” University of Notre Dame. https://doi.org/10.7274/28020782
+
+The Vector Data EcosystemSadie J. Ryan, Leah R. Johnson, Catherine A. Lippi, Lauren Cator, Samraat Pawar, and Samuel S. C. Rund. 2023. “The Vector Data Ecosystem.” University of Notre Dame. https://doi.org/10.7274/27854508 or Catherine A Lippi, Samuel S C Rund, Sadie J Ryan, Characterizing the Vector Data Ecosystem, Journal of Medical Entomology, Volume 60, Issue 2, March 2023, Pages 247–254 For more info: https://www.vectorbyte.org/blog/how-to-cite-us
+
+------------------------------------------------------------------------
+<center>
+![](graphics/Intro_VecTraits_11.jpg)
+</center>

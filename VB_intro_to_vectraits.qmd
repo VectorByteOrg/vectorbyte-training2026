@@ -62,7 +62,7 @@ insert_html_math <- make_latex_decorator("", "$$")
 - Typically field-collected surveillance data
 
 <center>
-![](graphics/Intro_VecTraits_1.jpg)
+![](graphics/Intro_VecTraits_1.jpg){width="70%"}
 </center>
 
 ## VecTraits
@@ -71,23 +71,38 @@ insert_html_math <- make_latex_decorator("", "$$")
 - Typically results from controlled laboratory experiments
 
 <center>
-![](graphics/Intro_VecTraits_2.jpg)
+![](graphics/Intro_VecTraits_2.jpg){width="70%"}
 </center>
 
 ## Vector Trait Data
 
 Vector trait: measurable biological aspects of life-history, behavior, or vector competence
 
+<br>
+
+::: columns
+::: {.column width="45%"}
+
+
 - Because we are dealing with ectothermic vectors, these are often measured against temperature in controlled laboratory environments
 
+
+::: 
+::: {.column width="55%"}
+
 <center>
-![](graphics/TPC_6.jpg)
+![](graphics/TPC_6.jpg){width="100%"}
 </center>
+:::
+
+:::
 
 ## Examples of Studies
+
 <center>
 ![](graphics/Intro_VecTraits_12.jpg)
 </center>
+
 ------------------------------------------------------------------------
 
 <center>
@@ -110,45 +125,66 @@ Vector trait: measurable biological aspects of life-history, behavior, or vector
 </center>
 
 ------------------------------------------------------------------------
+
 <center>
 ![](graphics/Intro_VecTraits_4.jpg)
 </center>
+
 ------------------------------------------------------------------------
+
 <center>
 ![](graphics/Intro_VecTraits_5.jpg)
 </center>
 
 ## VecTraits Required Columns
 
+A minimum set of columns required in the dataset for successful upload
+
+<br>
+
+***These cannot be missing***
+
+<br>
+
+They should include all available data
+
+<br>
+
+If a required column is missing, file may fail to upload without any error
+
+## VecTraits Required Columns
+
 ::: columns
 ::: {.column width="50%"}
 
-- Minimum columns required for upload
-- These cannot be missing
-- Should include all available data
-- If a required column is missing, file may fail to upload without and error
+- Original Trait Value
+- Original Trait Unit
+- Original ID
+- Location
+- Location Date Precision
 
-::: columns
+::: 
 ::: {.column width="50%"}
 
-$\Rightarrow$ Original Trait Value
-$\Rightarrow$ Original Trait Unit
-$\Rightarrow$ Original ID
-$\Rightarrow$ Location
-$\Rightarrow$ Location Date Precision
-$\Rightarrow$ Submitted By
-$\Rightarrow$ Contributor Email
-$\Rightarrow$ Citation
-$\Rightarrow$ Embargo Release
+
+- Submitted By
+- Contributor Email
+- Citation
+- Embargo Release
+
+:::
+:::
 
 ## More Column Definitions
 
 ------------------------------------------------------------------------
 
 ## Where to Find Template and Instructions
-- Must be logged into VectorByte account
+
+- Note: *Must be logged into VectorByte account*
+
 <center>
-![](graphics/Intro_VecTraits_6.jpg)
+![](graphics/Intro_VecTraits_6.jpg){width="80%"}
 </center>
 
 ## VecTraits Template
@@ -202,12 +238,22 @@ $\Rightarrow$ Embargo Release
 
 ## Vector Taxonomy
 
-- Full taxonomic grouping used in study/paper recorded in ‘interactorx’ column
-- This can include information on subspecies, species complex, biotype, etc
-- Dedicated columns for taxonomic groupings (Kingdom, Phylum, Class, Order, Family, Genus, Species)
-- The ‘interactorxspecies’ column should only contain specific epithet
-- Add additional interactors (e.g., interactor2, interactor3…) with associated taxonomy for any other organisms included in study
-- These may include pathogens, hosts, and plants
+::: columns
+::: {.column width="50%"}
+
+- Full taxonomic grouping in study/paper $\rightarrow$ ‘interactorx’ column
+- Can include information on subspecies, species complex, biotype, etc
+- Dedicated columns for taxonomic groupings (Kingdom, Phylum, etc.)
+
+::: 
+::: {.column width="50%"}
+
+- ‘interactorxspecies’ column should only contain specific epithet
+- Add additional interactors (e.g., interactor2...) with associated taxonomy for other organisms in study
+- Interactors may include pathogens, hosts, and plants
+
+:::
+:::
 
 ## Laboratory Conditions
 
@@ -261,22 +307,24 @@ $\Rightarrow$ Embargo Release
 ::: columns
 ::: {.column width="50%"}
 
-- PlotDigitizer (https://plotdigitizer.com)
-- GraphReader (https://www.graphreader.com)
-- WebPlotDigitizer (https://automeris.io)
+- PlotDigitizer (`plotdigitizer.com`)
+- GraphReader (`www.graphreader.com`)
+- WebPlotDigitizer (`automeris.io`)
 
 <center>
-![](graphics/Intro_VecTraits_8a.jpg)
+![](graphics/Intro_VecTraits_8a.jpg){width="80%"}
 </center>
 
-::: columns
+::: 
 ::: {.column width="50%"}
 
+<center>
+![](graphics/Intro_VecTraits_8b.jpg){width="75%"}
 
-![](graphics/Intro_VecTraits_8b.jpg)
-
-![](graphics/Intro_VecTraits_8c.jpg)
-
+![](graphics/Intro_VecTraits_8c.jpg){width="85%"}
+</center>
+:::
+:::
 
 ## Finding Data in VecTraits
 
@@ -307,11 +355,13 @@ $\Rightarrow$ Embargo Release
 ![](graphics/Intro_VecTraits_17.jpg)
 </center>
 
-## Citing VecTraits
+## Citing VecTraits/Data Ecosystem
 
-VecTraits Leah R. Johnson, Lauren Cator, Samuel S. C. Rund, Sadie Ryan, Paul J. Huxley, and Samraat Pawar. 2023. “VecTraits Explorer.” University of Notre Dame. https://doi.org/10.7274/28020782
+- LR Johnson, L Cator, SSC Rund, SJ Ryan, PJ Huxley, and S Pawar. 2023. "VecTraits Explorer". University of Notre Dame. DOI: 10.7274/28020782
+- SJ Ryan, LR. Johnson, CA Lippi, L Cator, S Pawar, and SSC Rund. 2023. "The Vector Data Ecosystem." University of Notre Dame. DOI: 10.7274/27854508 *or*
+- CA Lippi, SSC Rund, SJ Ryan, Characterizing the Vector Data Ecosystem, Journal of Medical Entomology, Volume 60, Issue 2, March 2023, Pages 247–254 
 
-The Vector Data EcosystemSadie J. Ryan, Leah R. Johnson, Catherine A. Lippi, Lauren Cator, Samraat Pawar, and Samuel S. C. Rund. 2023. “The Vector Data Ecosystem.” University of Notre Dame. https://doi.org/10.7274/27854508 or Catherine A Lippi, Samuel S C Rund, Sadie J Ryan, Characterizing the Vector Data Ecosystem, Journal of Medical Entomology, Volume 60, Issue 2, March 2023, Pages 247–254 For more info: https://www.vectorbyte.org/blog/how-to-cite-us
+For more info: `www.vectorbyte.org/blog/how-to-cite-us`
 
 ------------------------------------------------------------------------
 <center>

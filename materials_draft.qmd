@@ -69,7 +69,13 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 <br> 
 
-## Intro to the VecTraits Database and AI assisted digitization pipeline
+## Intro to the VecTraits Database
+
+- [Lecture](VB_intro_to_vectraits.qmd)
+
+<br>
+
+##  The VecTraits AI assisted digitization pipeline
 
 - [Coming Soon!]()
 

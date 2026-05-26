@@ -5,6 +5,10 @@ author:
       given: Sadie J.
       family: Ryan
     affiliation: University of Florida and VectorByte
+  - name:
+      given: Cat
+      family: Lippi
+      affiliation: Virginia Tech and VectorByte
 citation: true
 date: 2026-05-30
 date-format: long
@@ -215,3 +219,76 @@ NASA - lots of processed EO data from many missions with many spatiotemporal res
 ERA - large climate modeled runs and even counterfactuals
 
 Copernicus - European entry point for gridded and processed data sets, model outputs
+
+### Some climate resources
+
+**PRISM (Parameter-elevation Regressions on Independent Slopes Model)**
+
+https://prism.oregonstate.edu/data/
+
+- Gridded data for the continental/contiguous/coterminus US (CONUS)
+- Hosted at Oregon State
+- Daily 1981-present; monthly and annual 1895-present
+- 800m and 4km – currently both free to download
+- Uses 10k+ station data as inputs
+- Trusted product – USDA hardiness zones, e.g.
+- R package ‘prism’ API (https://docs.ropensci.org/prism/)
+
+------------------------------------------------------------------------
+**DAYMET**
+
+https://daymet.ornl.gov/
+
+- Data product interpolated and extrapolated from daily meteorological observations
+- Useful in the USA – does include PR and HI
+- Daily, 1km scale, a year in arears (current through 12-31-25)
+
+------------------------------------------------------------------------
+**Terra Climate – Climatology Lab**
+
+https://www.climatologylab.org/terraclimate.html
+
+- Monthly climate and climatic water balance for global terrestrial surfaces from 1950-present
+- 4km resolution
+- Global scale
+- Many climate variables
+
+------------------------------------------------------------------------
+**gridMET – Climatology Lab**
+
+https://www.climatologylab.org/gridmet.html
+
+- 4km resolution
+- Contiguous US and southern British Columbia
+- Daily from 1979 - Present
+- Many primary climate and derived variables
+
+------------------------------------------------------------------------
+**WorldClim**
+
+https://www.worldclim.org
+
+- Climate normals - 20-30 year periods and projections
+- Monthly means; basis for bioclim variables originally - widely used, also originally used PRISM-like interpolated data
+- Multiple resolutions 1km, 4km, etc - modeled, not more data addition
+- Useful for easy flexible comparisons across landscapes, for climate scenario comparisons, ecological modeling
+
+------------------------------------------------------------------------
+**Landsat Collection Surface Temperature**
+
+https://earthexplorer.usgs.gov
+
+- Remotely sensed satellite imagery
+- Global coverage
+- Available from 1982 - Present (mission specific)
+- Represents the temperature of the Earth’s surface in Kelvin
+- Available at a 30m spatial resolution
+- Freely available after creating account for USGS EarthExplorer
+- Rasters typically need processing for QC (e.g., removal of cloud cover)
+
+
+
+
+
+
+

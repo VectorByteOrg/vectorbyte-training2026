@@ -1,13 +1,6 @@
 ---
 title: "Welcome to the 2026 VectorByte Training Workshop"
-format:
-  html:
-    toc: false
-    toc-location: right
-    html-math-method: katex
-    css: styles.css
-    grid:
-      margin-width: 1000px
+
 ---
 
 ::: columns
@@ -34,6 +27,34 @@ format:
 Information about pre-workshop preparation -- including software installation, expectations for what you should already be familiar with, and review materials -- is available in the [pre-work portion of the materials page](materials.html#pre-work-and-set-up).
 
 <br> <br> <br>
+
+:::
+
+:::
+
+
+::: columns
+::: {.column width="62%"}
+
+This year we are partnering with the [Ecology and Evolution of Infectious Diseases Conference](https://cpe.vt.edu/eeid2026.html). The VectorByte workshop will run concurrently with the EEID training workshop, and will explore some topics jointly. 
+
+We will also be sharing meals and presenting mini-projects, to provide opportunities for networking by participants.
+
+:::
+
+::: {.column width="1%"}
+
+:::
+
+::: {.column width="37%"}
+
+<br>
+
+<center>
+
+[![](graphics/EEID2026.png){fig-alt="EEID 2026 Logo"}](https://cpe.vt.edu/eeid2026.html)
+
+</center>
 
 :::
 

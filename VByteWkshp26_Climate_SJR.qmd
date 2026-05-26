@@ -234,6 +234,10 @@ https://prism.oregonstate.edu/data/
 - Trusted product – USDA hardiness zones, e.g.
 - R package ‘prism’ API (https://docs.ropensci.org/prism/)
 
+<center>
+![](graphics/PRISM.jpg)
+</center>
+
 ------------------------------------------------------------------------
 **DAYMET**
 
@@ -242,6 +246,12 @@ https://daymet.ornl.gov/
 - Data product interpolated and extrapolated from daily meteorological observations
 - Useful in the USA – does include PR and HI
 - Daily, 1km scale, a year in arears (current through 12-31-25)
+
+<center>
+![](graphics/DaymetTable.jpg)
+
+![](graphics/DaymetMap.jpg)
+</center>
 
 ------------------------------------------------------------------------
 **Terra Climate – Climatology Lab**
@@ -253,6 +263,12 @@ https://www.climatologylab.org/terraclimate.html
 - Global scale
 - Many climate variables
 
+<center>
+![](graphics/TerraClimateText.jpg)
+
+![](graphics/TerraClimateMap.jpg)
+</center>
+
 ------------------------------------------------------------------------
 **gridMET – Climatology Lab**
 
@@ -262,6 +278,10 @@ https://www.climatologylab.org/gridmet.html
 - Contiguous US and southern British Columbia
 - Daily from 1979 - Present
 - Many primary climate and derived variables
+
+<center>
+![](graphics/GRIDMET.jpg)
+</center>
 
 ------------------------------------------------------------------------
 **WorldClim**
@@ -285,6 +305,10 @@ https://earthexplorer.usgs.gov
 - Available at a 30m spatial resolution
 - Freely available after creating account for USGS EarthExplorer
 - Rasters typically need processing for QC (e.g., removal of cloud cover)
+
+<center>
+![](graphics/Landsat.jpg)
+</center>
 
 
 

@@ -177,11 +177,183 @@ Plot these together in rough plots in R.
 
 ERA 5 is a global reanalysis product served by Copernicus, the European Center for Medium Range Weather Forecasts (ECMRWF) - The CDS - Climate Data Store on Copernicus holds the ERA5 products. https://cds.climate.copernicus.eu/datasets
 
-In this section, we introduce you to a vignette to access ERA 5 that has been aggregated at admin level scales for the globe by projects related to the UK VBD Hub; using this derived dataset obviates the need to acquire and use an API Key from Copernicus. (https://ohvbd.vbdhub.org/reference/assoc_ad.html)
+In this section, link you to a vignette to access ERA 5 that has been aggregated at admin level scales (GADM) for the globe by projects related to the UK VBD Hub. What you will find at present is access to these data for a project that explored patterns in COVID-19 in 2020-2021 or thereabouts; we are in discussions as to keeping this more up to date. Using this derived and aggregated dataset obviates the need to acquire and use an API Key from Copernicus. (https://ohvbd.vbdhub.org/reference/assoc_ad.html). Of key importance, areaData (and assoc_ad) is not a point based query, although you can query using Lat/Lon. Caveat emptor, you are querying an aggregated dataset, not pixel-level. The smallest admin area level here is approximately equivalent to a county. 
 
-Alternately, we will share a link to R code demonstrating how to use API keys in your data queries of Copernicus directly (https://cran.r-project.org/web/packages/rcontroll/vignettes/climate.html)
+The following is your opportunity to run through the experience of acquiring the API key and working with data from ECMRWF through R - note that large NetCDF files are were not designed with R in mind, but it's getting better everyday. You will still see some surprising aspects, but hopefully you can get to the point of plotting a pretty map of one timeslice from a larger time series, and perhaps manipulating a time series for time-dependent use. 
 
-Of key importance, caveats about ERA 5 (Sadie) - and areaData (and assoc_ad from Francis) is not a point based query, although you can query using Lat/Lon. Caveat emptor, you are querying an aggregated dataset, not pixel-level. 
+THIS IS R SCRIPT PASTED IN HERE
+
+#Sadie is seal clubbing scripts to try to download stuff from ERA 5
+
+setwd("R:/Ryan_Lab/VectorByte")
+
+library(terra) # to read the netCDF files
+library(lubridate) # to deal with dates and times
+library(dplyr) # to wrangle and tidy the data
+library(tidyr) # to wrangle and tidy the data
+library(ggplot2) # to make statis maps
+library(gganimate) # to make a temporal gif of climate variation
+library(ecmwfr) # to request data from Copernicus
+library(sf) # to extract coordinates from spatial objects
+library(rnaturalearth) #natural earth library, good for making spatial things
+library(RNetCDF)
+library(ncdf4)
+library(stars)
+library(tidyverse)
+library(ggpubr)
+library(tidyterra)
+
+
+
+#FIRST, make yourself a user account
+
+#Go to the link https://www.ecmwf.int/, see login on top right,
+#Click it, go to Register New User - do that. 
+#I am sjryan@ufl.edu - PlasticFish99!
+
+#Validate from email link 
+
+#CDS is the same, but still go to https://cds.climate.copernicus.eu/profile
+#Go there, fill out the account, and then you will 'activate your profile'
+#at which point you will see your API key
+
+#Run the following, and the API key UI will pop up - put your API key in there
+wf_set_key()
+
+
+#From the ECMWF-R package - look at all the datasets you can get from WF 
+wf_datasets()
+
+
+#Here we are creating an area file so we can attempt to look at a location outside the USA
+#Let's make a polygon (sf object) of Cornwall, in the UK
+
+uk_states_ne <- ne_states(country = 'united kingdom',    
+                          returnclass = 'sf')
+cornwall_ne<-uk_states_ne[which(uk_states_ne$name == "Cornwall"), ]
+
+plot(cornwall_ne) #have a nice look at the lower left bit of things. 
+#I used to go on holiday there as a child. Fans of Poldark might also know it.
+
+#Get the bounding box for your polygon
+st_bbox(cornwall_ne)
+
+#WARNING!
+#This bounding box outcome is NOT in the right format for your query to ERA (see below); the coordinate pairs are 'flipped'.
+#Quick tip - take a coordinate pair and put it in Google Maps to see if it's anywhere near your study area
+
+#To send a data request, you make the list of the information for the request 
+#then, you send the request. Note the two different chunks of script for this.
+#The documentation in the ECMWF R package is there, but not awesome.
+
+#Go to your user profile on Copernicus, and accept ALL the licenses. Second Tab!
+request <- list(
+  "dataset_short_name" = "reanalysis-era5-land-monthly-means",
+  "format" = "netcdf",
+  "product_type" = "monthly_averaged_reanalysis_by_hour_of_day",
+  "variable" = c(
+    "2m_temperature",
+    "total_precipitation"
+  ),
+  "month" = sprintf("%02d", 1:12),
+  "time" = sprintf("%02d:00", 0:23),
+  "year" = as.character(2022),
+  "target" = "ERA5land_hr_Cornwall_2022a.nc",
+  "area" = "49.959133/-5.715647/50.922991/-4.180043"
+)
+wf_request(request = request)
+
+#This may take a little time. When it has chugged through the data, it will put
+# it in some random place on your harddrive. I have no great solution for this.
+#Just go and find it and unzip it to your working directory to continue
+
+#Okay, so it's a NetCDF file - picture a stack of gridded maps of your data,
+#one for each timeslice. Let's find the data, see if we have done this right, and then plot a timeslice.
+
+test_r<-rast("data_stream-mnth.nc")
+plot(test_r[[1]])
+
+#If you used the Cornwall bounding box, you should see a very large pixel version of Cornwall
+
+#Extracting that one time slice and changing it to a dataframe for plotting reasons
+tr<-rast(test_r[[1]])
+df <- as.data.frame(test_r[[1]], xy = TRUE)
+
+# Rename columns if needed (e.g., if the variable name is "temp")
+colnames(df) <- c("x", "y", "Temp (K)")
+
+#Making both our vector map of Cornwall and our dataframe into plottable objects for ggplot
+cw<-vect(cornwall_ne)
+df2<-rast(df)
+
+
+ggplot()+
+  geom_raster(data=df2, aes(x = x, y = y, fill = `Temp (K)`)) +
+  scale_fill_viridis_c(na.value=NA) +
+  geom_sf(data = cw, color="black",
+          fill=NA, size=0.25)+
+  theme_bw()
+
+Your plot might look a bit like this!
+
+ADD THE PRETTY PLOT HERE - 
+
+
+#Plot a variable over time why not
+#This takes a lot of fiddling with the NetCDF file, so hold on to your butts
+our_nc_data <- nc_open("data_stream-mnth.nc")
+print(our_nc_data)
+attributes(our_nc_data$var)
+attributes(our_nc_data$dim)
+lat <- ncvar_get(our_nc_data, "latitude")
+nlat <- dim(lat) 
+lon <- ncvar_get(our_nc_data, "longitude")
+time <- ncvar_get(our_nc_data, "valid_time")
+head(time)
+tunits <- ncatt_get(our_nc_data, "valid_time", "units")#Tells you what the time units are - these are funky, check it out!
+
+time_obs <- as.POSIXct(time, origin = "1970–01–01", tz="GMT")
+origin <- sub(".*since ", "", tunits)
+#as.numeric(as.character("1609459200"))
+
+# convert time -- split the time units string into fields
+t_ustr <- strsplit(tunits$value, " ")
+t_dstr <- strsplit(unlist(t_ustr)[3], "-")
+date <- ymd(t_dstr) + dseconds(time)
+time<-date
+
+t2m_array <- ncvar_get(our_nc_data, "t2m") 
+fillvalue <- ncatt_get(our_nc_data, "t2m", "_FillValue")
+t2m_array[t2m_array==fillvalue$value] <- NA
+
+tp_array <- ncvar_get(our_nc_data, "tp") 
+fillvalue_tp <- ncatt_get(our_nc_data, "tp", "_FillValue")
+tp_array[tp_array==fillvalue_tp$value] <- NA
+
+lonlattime <- as.matrix(expand.grid(lon,lat,time))
+head(lonlattime)
+
+t2m_vec_long <- as.vector(t2m_array)
+tp_vec_long <- as.vector(tp_array)
+
+t2p_obs <- data.frame(cbind(lonlattime, t2m_vec_long, tp_vec_long))
+head(t2p_obs)
+
+#change column names
+colnames(t2p_obs) <- c("Long","Lat","Date","t2m", "tp")
+
+#This is a very ugly plot, but you can make it functional - this is over 40K data points on a plot
+  ggplot(data=t2p_obs, aes(x=Date, y=t2m)) +
+  geom_point(size=1) +
+  geom_line(size=0.5) +
+  labs(title="Time series of monthly avearaged hourly temperature (K) in Cornwall from ERA-5, 2022", 
+       x = "Year",
+       y = "Mean Temperature (°K)")
+
+
+
+
+
 
 
 # Section 4: Additional climate resources and caveats

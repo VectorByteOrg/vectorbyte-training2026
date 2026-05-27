@@ -176,8 +176,19 @@ If a required column is missing, file may fail to upload without any error
 :::
 
 ## More Column Definitions
+- Original Trait Name: trait as named in source
+- Original Trait Def: definition of trait as named in source
+- Original Error: error recorded in study (additional column for units)
+- Interactor1: lowest taxonomic identity of main study organism 
+- Interactor1 Number: if grouped, number of individuals (i.e., experiment sample size)
+- Interactor1 Temp: experimental temperature (additional column for units)
 
-------------------------------------------------------------------------
+
+## More Column Definitions
+- Interactor2: lowest taxonomic identity of additional organisms in experiment
+*Note: can be expanded to accomodate experimental design*
+- Second Stressor: additional experimental factors (e.g., CO2)
+- Notes: any additional information not captured with existing fields
 
 ## Where to Find Template and Instructions
 
@@ -276,8 +287,6 @@ If a required column is missing, file may fail to upload without any error
 - Additional interactors can be recorded for other named organisms in study
 - The VecTraits template can be expanded to accommodate additional species
 - These may include parasites, hosts, viruses, plant substrate, etc
-
-## Other Columns
 
 ## Digitizing Trait Data
 

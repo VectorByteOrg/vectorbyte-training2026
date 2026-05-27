@@ -36,7 +36,7 @@ Information about pre-workshop preparation -- including software installation, e
 ::: columns
 ::: {.column width="62%"}
 
-This year we are partnering with the [Ecology and Evolution of Infectious Diseases Conference](https://cpe.vt.edu/eeid2026.html). The VectorByte workshop will run concurrently with the EEID training workshop, and will explore some topics jointly. 
+This year we are partnering with the [Ecology and Evolution of Infectious Diseases Conference](https://cpe.vt.edu/eeid2026.html). The VectorByte workshop will run concurrently with the [EEID training workshop](https://eeidworkshop2026.github.io/home/), and will explore some topics jointly. 
 
 We will also be sharing meals and presenting mini-projects, to provide opportunities for networking by participants.
 

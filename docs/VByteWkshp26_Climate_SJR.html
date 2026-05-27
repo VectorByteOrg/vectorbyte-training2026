@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sadie J. Ryan">
+<meta name="author" content="Cat Lippi">
 <meta name="dcterms.date" content="2026-05-30">
 
 <title>VectorByte Methods Training: ‘Climate’ variables for time-series analyses – VectorByte Training 2026</title>
@@ -24,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -153,6 +189,15 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#eo-vs-weather-station-data" id="toc-eo-vs-weather-station-data" class="nav-link" data-scroll-target="#eo-vs-weather-station-data">EO vs Weather station data</a></li>
   <li><a href="#weather-station-data" id="toc-weather-station-data" class="nav-link" data-scroll-target="#weather-station-data">Weather Station Data</a></li>
+  <li><a href="#some-climate-resources" id="toc-some-climate-resources" class="nav-link" data-scroll-target="#some-climate-resources">Some climate resources</a>
+  <ul class="collapse">
+  <li><a href="#prism-parameter-elevation-regressions-on-independent-slopes-model" id="toc-prism-parameter-elevation-regressions-on-independent-slopes-model" class="nav-link" data-scroll-target="#prism-parameter-elevation-regressions-on-independent-slopes-model">PRISM (Parameter-elevation Regressions on Independent Slopes Model)</a></li>
+  <li><a href="#daymet" id="toc-daymet" class="nav-link" data-scroll-target="#daymet">DAYMET</a></li>
+  <li><a href="#terra-climate-climatology-lab" id="toc-terra-climate-climatology-lab" class="nav-link" data-scroll-target="#terra-climate-climatology-lab">Terra Climate – Climatology Lab</a></li>
+  <li><a href="#gridmet-climatology-lab" id="toc-gridmet-climatology-lab" class="nav-link" data-scroll-target="#gridmet-climatology-lab">gridMET – Climatology Lab</a></li>
+  <li><a href="#worldclim" id="toc-worldclim" class="nav-link" data-scroll-target="#worldclim">WorldClim</a></li>
+  <li><a href="#landsat-collection-surface-temperature" id="toc-landsat-collection-surface-temperature" class="nav-link" data-scroll-target="#landsat-collection-surface-temperature">Landsat Collection Surface Temperature</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -171,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Authors</div>
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
@@ -181,6 +226,11 @@ ul.task-list li input[type="checkbox"] {
         <p class="affiliation">
             University of Florida and VectorByte
           </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Cat Lippi </p>
+  </div>
+  <div class="quarto-title-meta-contents">
       </div>
   </div>
 
@@ -323,22 +373,204 @@ Seems to get released by calendar year (up to end of last year)</p>
 <section id="section-3-going-global---era-5-access" class="level1">
 <h1>Section 3: Going Global - ERA-5 access</h1>
 <p>ERA 5 is a global reanalysis product served by Copernicus, the European Center for Medium Range Weather Forecasts (ECMRWF) - The CDS - Climate Data Store on Copernicus holds the ERA5 products. https://cds.climate.copernicus.eu/datasets</p>
-<p>In this section, we introduce you to a vignette to access ERA 5 that has been aggregated at admin level scales for the globe by projects related to the UK VBD Hub; using this derived dataset obviates the need to acquire and use an API Key from Copernicus. (https://ohvbd.vbdhub.org/reference/assoc_ad.html)</p>
-<p>Alternately, we will share a link to R code demonstrating how to use API keys in your data queries of Copernicus directly (https://cran.r-project.org/web/packages/rcontroll/vignettes/climate.html)</p>
-<p>Of key importance, caveats about ERA 5 (Sadie) - and areaData (and assoc_ad from Francis) is not a point based query, although you can query using Lat/Lon. Caveat emptor, you are querying an aggregated dataset, not pixel-level.</p>
+<p>In this section, link you to a vignette to access ERA 5 that has been aggregated at admin level scales (GADM) for the globe by projects related to the UK VBD Hub. What you will find at present is access to these data for a project that explored patterns in COVID-19 in 2020-2021 or thereabouts; we are in discussions as to keeping this more up to date. Using this derived and aggregated dataset obviates the need to acquire and use an API Key from Copernicus. (https://ohvbd.vbdhub.org/reference/assoc_ad.html). Of key importance, areaData (and assoc_ad) is not a point based query, although you can query using Lat/Lon. Caveat emptor, you are querying an aggregated dataset, not pixel-level. The smallest admin area level here is approximately equivalent to a county.</p>
+<p>The following is your opportunity to run through the experience of acquiring the API key and working with data from ECMRWF through <code>R</code> - note that large NetCDF files are were not designed with R in mind, but it’s getting better everyday. You will still see some surprising aspects, but hopefully you can get to the point of plotting a pretty map of one timeslice from a larger time series, and perhaps manipulating a time series for time-dependent use.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra) <span class="co"># to read the netCDF files</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) <span class="co"># to deal with dates and times</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># to wrangle and tidy the data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># to wrangle and tidy the data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># to make statis maps</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate) <span class="co"># to make a temporal gif of climate variation</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ecmwfr) <span class="co"># to request data from Copernicus</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># to extract coordinates from spatial objects</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth) <span class="co">#natural earth library, good for making spatial things</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RNetCDF)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ncdf4)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>FIRST, make yourself a user account:</p>
+<ul>
+<li>Go to the link https://www.ecmwf.int/, see login on top right</li>
+<li>Click it, go to Register New User - do that.</li>
+<li>Validate from email link</li>
+</ul>
+<p>CDS is the same, but you still need to</p>
+<ul>
+<li>go to <a href="https://cds.climate.copernicus.eu/profile">https://cds.climate.copernicus.eu/profile</a></li>
+<li>fill out the account</li>
+<li>then you will “activate your profile” at which point you will see your API key</li>
+</ul>
+<p><strong><em>The code that follows in this section is not run and rendered on the website because it is interactive. You will need to run each code chunk yourself. We instead provide example plots as fixed images so you know what things should look like.</em></strong></p>
+<p>Run the following</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wf_set_key</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This will make your API key UI pop up - put your API key in there</p>
+<p>Next we will use the ECMWF-R package to look at all the datasets you can get from WF</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wf_datasets</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Here we are creating an area file so we can attempt to </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## look at a location outside the USA</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Let's make a polygon (sf object) of Cornwall, UK</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>uk_states_ne <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">'united kingdom'</span>,    </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">returnclass =</span> <span class="st">'sf'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>cornwall_ne<span class="ot">&lt;-</span>uk_states_ne[<span class="fu">which</span>(uk_states_ne<span class="sc">$</span>name <span class="sc">==</span> <span class="st">"Cornwall"</span>), ]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">## have a nice look at the lower left bit of things. </span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">## I used to go on holiday there as a child. </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Fans of Poldark might also know it.</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cornwall_ne)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Get the bounding box for your polygon</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(cornwall_ne)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="do">#######################</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">WARNING</span><span class="do">!</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="do">## This bounding box outcome is NOT in the right format </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="do">## for your query to ERA (see below); the coordinate </span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="do">## pairs are 'flipped'</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="do">#######################</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Quick tip - take a coordinate pair and put it in </span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Google Maps to see if it's anywhere near your study area</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="do">## To send a data request, you make the list of the </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="do">## information for the request </span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## then, you send the request. Note the two different </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="do">## chunks of script for this.</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## The documentation in the ECMWF R package is there, </span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="do">## but not awesome.</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Go to your user profile on Copernicus, </span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="do">## and accept ALL the licenses. Second Tab!</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>request <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dataset_short_name"</span> <span class="ot">=</span> <span class="st">"reanalysis-era5-land-monthly-means"</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"format"</span> <span class="ot">=</span> <span class="st">"netcdf"</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"product_type"</span> <span class="ot">=</span> <span class="st">"monthly_averaged_reanalysis_by_hour_of_day"</span>,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="st">"variable"</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"2m_temperature"</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total_precipitation"</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"month"</span> <span class="ot">=</span> <span class="fu">sprintf</span>(<span class="st">"%02d"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="st">"time"</span> <span class="ot">=</span> <span class="fu">sprintf</span>(<span class="st">"%02d:00"</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">23</span>),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"year"</span> <span class="ot">=</span> <span class="fu">as.character</span>(<span class="dv">2022</span>),</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"target"</span> <span class="ot">=</span> <span class="st">"ERA5land_hr_Cornwall_2022a.nc"</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"area"</span> <span class="ot">=</span> <span class="st">"49.959133/-5.715647/50.922991/-4.180043"</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="fu">wf_request</span>(<span class="at">request =</span> request)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This may take a little time. When it has chugged through the data, it will put it in some random place on your harddrive. I have no great solution for this. Just go and find it and unzip it to your working directory to continue.</p>
+<p>The file that you’ve downloaded is a NetCDF file picture this as a stack of gridded maps of your data, one for each timeslice. Let’s find the data, see if we have done this right, and then plot a timeslice.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_r<span class="ot">&lt;-</span><span class="fu">rast</span>(<span class="st">"data_stream-mnth.nc"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(test_r[[<span class="dv">1</span>]])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## If you used the Cornwall bounding box, you </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## should see a very large pixel version of Cornwall</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Extracting that one time slice and changing it to a </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## dataframe for plotting reasons</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>tr<span class="ot">&lt;-</span><span class="fu">rast</span>(test_r[[<span class="dv">1</span>]])</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(test_r[[<span class="dv">1</span>]], <span class="at">xy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Rename columns if needed </span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## (e.g., if the variable name is "temp")</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"Temp (K)"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Making both our vector map of Cornwall and our dataframe</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="do">## into plotable objects for ggplot</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>cw<span class="ot">&lt;-</span><span class="fu">vect</span>(cornwall_ne)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">&lt;-</span><span class="fu">rast</span>(df)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data=</span>df2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> <span class="st">`</span><span class="at">Temp (K)</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">na.value=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> cw, <span class="at">color=</span><span class="st">"black"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">size=</span><span class="fl">0.25</span>)<span class="sc">+</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Your plot might look a bit like this!</p>
+<center>
+<img src="graphics/CornwalKelvinMap.jpeg" class="img-fluid">
+</center>
+<p>Next we will plot a variable over time (<em>note: This takes a lot of fiddling with the NetCDF file</em>)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>our_nc_data <span class="ot">&lt;-</span> <span class="fu">nc_open</span>(<span class="st">"data_stream-mnth.nc"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(our_nc_data)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(our_nc_data<span class="sc">$</span>var)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(our_nc_data<span class="sc">$</span>dim)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>lat <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"latitude"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>nlat <span class="ot">&lt;-</span> <span class="fu">dim</span>(lat) </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>lon <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"longitude"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"valid_time"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(time)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Tells you what the time units are - </span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## these are funky, check it out!</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>tunits <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"valid_time"</span>, <span class="st">"units"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>time_obs <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(time, <span class="at">origin =</span> <span class="st">"1970–01–01"</span>, <span class="at">tz=</span><span class="st">"GMT"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">".*since "</span>, <span class="st">""</span>, tunits)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#as.numeric(as.character("1609459200"))</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># convert time -- split the time units string into fields</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>t_ustr <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(tunits<span class="sc">$</span>value, <span class="st">" "</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>t_dstr <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="fu">unlist</span>(t_ustr)[<span class="dv">3</span>], <span class="st">"-"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(t_dstr) <span class="sc">+</span> <span class="fu">dseconds</span>(time)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>time<span class="ot">&lt;-</span>date</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>t2m_array <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"t2m"</span>) </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>fillvalue <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"t2m"</span>, <span class="st">"_FillValue"</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>t2m_array[t2m_array<span class="sc">==</span>fillvalue<span class="sc">$</span>value] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>tp_array <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"tp"</span>) </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>fillvalue_tp <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"tp"</span>, <span class="st">"_FillValue"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>tp_array[tp_array<span class="sc">==</span>fillvalue_tp<span class="sc">$</span>value] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>lonlattime <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">expand.grid</span>(lon,lat,time))</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lonlattime)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>t2m_vec_long <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(t2m_array)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>tp_vec_long <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(tp_array)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>t2p_obs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(lonlattime, t2m_vec_long, tp_vec_long))</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(t2p_obs)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#change column names</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(t2p_obs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Long"</span>,<span class="st">"Lat"</span>,<span class="st">"Date"</span>,<span class="st">"t2m"</span>, <span class="st">"tp"</span>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#This is a very ugly plot, but you can make it functional </span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="do">## - this is over 40K data points on a plot</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data=</span>t2p_obs, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>t2m)) <span class="sc">+</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Time series of monthly avearaged hourly</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="st">       temperature (K) in Cornwall from ERA-5, 2022"</span>, </span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mean Temperature (°K)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="section-4-additional-climate-resources-and-caveats" class="level1">
 <h1>Section 4: Additional climate resources and caveats</h1>
-<section id="eo-vs-weather-station-data" class="level3">
-<h3 class="anchored" data-anchor-id="eo-vs-weather-station-data">EO vs Weather station data</h3>
+<section id="eo-vs-weather-station-data" class="level2">
+<h2 class="anchored" data-anchor-id="eo-vs-weather-station-data">EO vs Weather station data</h2>
 <p>EO - Earth Observation - primarily satellite data - from ‘looking down’ onto things (also called EOS data - earth observation system data)</p>
 <p>LST - land surface temperature is reflectance converted to temperature via algorithms</p>
 <p>What if it’s a forest? What is your vector experiencing?</p>
 <p>What if there’s lots of clouds? What if cloud cover prevents accurate readings in a systematic way, e.g.&nbsp;at certain times of year?</p>
 <p>Lots of products available, always a lag because someone has to process and QA/QC before you can use it</p>
 </section>
-<section id="weather-station-data" class="level3">
-<h3 class="anchored" data-anchor-id="weather-station-data">Weather Station Data</h3>
+<section id="weather-station-data" class="level2">
+<h2 class="anchored" data-anchor-id="weather-station-data">Weather Station Data</h2>
 <p>Point based data that often gets interpolated to represent irregular region shapes - great if you have lots of stations, less great with sparse coverage.</p>
 <p>Requires people to record data at some step of the way; gaps can occur on holidays, larger gaps during natural disasters - know what missing data protocols are within the dataset.</p>
 <p>Geography (where in the world) very much influences coverage and quality. Tracking down what the nearest weather station is takes a little time (look on NOAA, WMO), but getting those data can sometimes be complicated.</p>
@@ -349,20 +581,110 @@ Seems to get released by calendar year (up to end of last year)</p>
 <p>NASA - lots of processed EO data from many missions with many spatiotemporal resolutions and utility</p>
 <p>ERA - large climate modeled runs and even counterfactuals</p>
 <p>Copernicus - European entry point for gridded and processed data sets, model outputs</p>
+</section>
+<section id="some-climate-resources" class="level2">
+<h2 class="anchored" data-anchor-id="some-climate-resources">Some climate resources</h2>
+<section id="prism-parameter-elevation-regressions-on-independent-slopes-model" class="level3">
+<h3 class="anchored" data-anchor-id="prism-parameter-elevation-regressions-on-independent-slopes-model">PRISM (Parameter-elevation Regressions on Independent Slopes Model)</h3>
+<p><a href="https://prism.oregonstate.edu/data/">https://prism.oregonstate.edu/data/</a></p>
+<ul>
+<li>Gridded data for the continental/contiguous/coterminus US (CONUS)</li>
+<li>Hosted at Oregon State</li>
+<li>Daily 1981-present; monthly and annual 1895-present</li>
+<li>800m and 4km – currently both free to download</li>
+<li>Uses 10k+ station data as inputs</li>
+<li>Trusted product – USDA hardiness zones, e.g.</li>
+<li>R package ‘prism’ API (https://docs.ropensci.org/prism/)</li>
+</ul>
+<center>
+<img src="graphics/PRISM.jpg" class="img-fluid">
+</center>
+<hr>
+</section>
+<section id="daymet" class="level3">
+<h3 class="anchored" data-anchor-id="daymet">DAYMET</h3>
+<p><a href="https://daymet.ornl.gov/">https://daymet.ornl.gov/</a></p>
+<ul>
+<li>Data product interpolated and extrapolated from daily meteorological observations</li>
+<li>Useful in the USA – does include PR and HI</li>
+<li>Daily, 1km scale, a year in arears (current through 12-31-25)</li>
+</ul>
+<center>
+<p><img src="graphics/DaymetTable.jpg" class="img-fluid"></p>
+<img src="graphics/DaymetMap.jpg" class="img-fluid">
+</center>
+<hr>
+</section>
+<section id="terra-climate-climatology-lab" class="level3">
+<h3 class="anchored" data-anchor-id="terra-climate-climatology-lab">Terra Climate – Climatology Lab</h3>
+<p><a href="https://www.climatologylab.org/terraclimate.html">https://www.climatologylab.org/terraclimate.html</a></p>
+<ul>
+<li>Monthly climate and climatic water balance for global terrestrial surfaces from 1950-present</li>
+<li>4km resolution</li>
+<li>Global scale</li>
+<li>Many climate variables</li>
+</ul>
+<center>
+<p><img src="graphics/TerraClimateText.jpg" class="img-fluid"></p>
+<img src="graphics/TerraClimateMap.jpg" class="img-fluid">
+</center>
+<hr>
+</section>
+<section id="gridmet-climatology-lab" class="level3">
+<h3 class="anchored" data-anchor-id="gridmet-climatology-lab">gridMET – Climatology Lab</h3>
+<p><a href="https://www.climatologylab.org/gridmet.html">https://www.climatologylab.org/gridmet.html</a></p>
+<ul>
+<li>4km resolution</li>
+<li>Contiguous US and southern British Columbia</li>
+<li>Daily from 1979 - Present</li>
+<li>Many primary climate and derived variables</li>
+</ul>
+<center>
+<img src="graphics/GRIDMET.jpg" class="img-fluid">
+</center>
+<hr>
+</section>
+<section id="worldclim" class="level3">
+<h3 class="anchored" data-anchor-id="worldclim">WorldClim</h3>
+<p><a href="https://www.worldclim.org">https://www.worldclim.org</a></p>
+<ul>
+<li>Climate normals - 20-30 year periods and projections</li>
+<li>Monthly means; basis for bioclim variables originally - widely used, also originally used PRISM-like interpolated data</li>
+<li>Multiple resolutions 1km, 4km, etc - modeled, not more data addition</li>
+<li>Useful for easy flexible comparisons across landscapes, for climate scenario comparisons, ecological modeling</li>
+</ul>
+<hr>
+</section>
+<section id="landsat-collection-surface-temperature" class="level3">
+<h3 class="anchored" data-anchor-id="landsat-collection-surface-temperature">Landsat Collection Surface Temperature</h3>
+<p><a href="https://earthexplorer.usgs.gov">https://earthexplorer.usgs.gov</a></p>
+<ul>
+<li>Remotely sensed satellite imagery</li>
+<li>Global coverage</li>
+<li>Available from 1982 - Present (mission specific)</li>
+<li>Represents the temperature of the Earth’s surface in Kelvin</li>
+<li>Available at a 30m spatial resolution</li>
+<li>Freely available after creating account for USGS EarthExplorer</li>
+<li>Rasters typically need processing for QC (e.g., removal of cloud cover)</li>
+</ul>
+<center>
+<img src="graphics/Landsat.jpg" class="img-fluid">
+</center>
 
 
+</section>
 </section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{ryan2026,
-  author = {Ryan, Sadie J.},
+  author = {Ryan, Sadie J. and Lippi, Cat},
   title = {{VectorByte} {Methods} {Training:} “{Climate}” Variables for
     Time-Series Analyses},
   date = {2026-05-30},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-ryan2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Ryan, Sadie J. 2026.<span>“ VectorByte Methods Training:
+Ryan, Sadie J., and Cat Lippi. 2026.<span>“ VectorByte Methods Training:
 <span>‘Climate’</span> Variables for Time-Series Analyses.”</span> May
 30.
 </div></div></section></div></main> <!-- /main -->

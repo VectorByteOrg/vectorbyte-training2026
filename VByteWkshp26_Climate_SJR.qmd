@@ -179,14 +179,10 @@ ERA 5 is a global reanalysis product served by Copernicus, the European Center f
 
 In this section, link you to a vignette to access ERA 5 that has been aggregated at admin level scales (GADM) for the globe by projects related to the UK VBD Hub. What you will find at present is access to these data for a project that explored patterns in COVID-19 in 2020-2021 or thereabouts; we are in discussions as to keeping this more up to date. Using this derived and aggregated dataset obviates the need to acquire and use an API Key from Copernicus. (https://ohvbd.vbdhub.org/reference/assoc_ad.html). Of key importance, areaData (and assoc_ad) is not a point based query, although you can query using Lat/Lon. Caveat emptor, you are querying an aggregated dataset, not pixel-level. The smallest admin area level here is approximately equivalent to a county. 
 
-The following is your opportunity to run through the experience of acquiring the API key and working with data from ECMRWF through R - note that large NetCDF files are were not designed with R in mind, but it's getting better everyday. You will still see some surprising aspects, but hopefully you can get to the point of plotting a pretty map of one timeslice from a larger time series, and perhaps manipulating a time series for time-dependent use. 
+The following is your opportunity to run through the experience of acquiring the API key and working with data from ECMRWF through `R` - note that large NetCDF files are were not designed with R in mind, but it's getting better everyday. You will still see some surprising aspects, but hopefully you can get to the point of plotting a pretty map of one timeslice from a larger time series, and perhaps manipulating a time series for time-dependent use. 
 
-THIS IS R SCRIPT PASTED IN HERE
 
-#Sadie Ryan - download climate data from ERA 5
-
-setwd("R:/Ryan_Lab/VectorByte")
-
+```{r, message=FALSE, warning=FALSE}
 library(terra) # to read the netCDF files
 library(lubridate) # to deal with dates and times
 library(dplyr) # to wrangle and tidy the data
@@ -202,51 +198,71 @@ library(stars)
 library(tidyverse)
 library(ggpubr)
 library(tidyterra)
+```
 
 
+FIRST, make yourself a user account: 
 
-#FIRST, make yourself a user account
+- Go to the link https://www.ecmwf.int/, see login on top right
+- Click it, go to Register New User - do that. 
+- Validate from email link 
 
-#Go to the link https://www.ecmwf.int/, see login on top right,
-#Click it, go to Register New User - do that. 
+CDS is the same, but you still need to
 
+- go to [https://cds.climate.copernicus.eu/profile](https://cds.climate.copernicus.eu/profile)
+- fill out the account
+- then you will "activate your profile" at which point you will see your API key
 
-#Validate from email link 
+***The code that follows in this section is not run and rendered on the website because it is interactive. You will need to run each code chunk yourself. We instead provide example plots as fixed images so you know what things should look like.***
 
-#CDS is the same, but still go to https://cds.climate.copernicus.eu/profile
-#Go there, fill out the account, and then you will 'activate your profile'
-#at which point you will see your API key
-
-#Run the following, and the API key UI will pop up - put your API key in there
+Run the following
+```{r, eval=FALSE}
 wf_set_key()
+```
+This will make your API key UI pop up - put your API key in there
 
-
-#From the ECMWF-R package - look at all the datasets you can get from WF 
+Next we will use the ECMWF-R package to look at all the datasets you can get from WF
+```{r, eval=FALSE}
 wf_datasets()
+```
 
+```{r, eval=FALSE}
+## Here we are creating an area file so we can attempt to 
+## look at a location outside the USA
 
-#Here we are creating an area file so we can attempt to look at a location outside the USA
-#Let's make a polygon (sf object) of Cornwall, in the UK
+## Let's make a polygon (sf object) of Cornwall, UK
 
 uk_states_ne <- ne_states(country = 'united kingdom',    
                           returnclass = 'sf')
 cornwall_ne<-uk_states_ne[which(uk_states_ne$name == "Cornwall"), ]
 
-plot(cornwall_ne) #have a nice look at the lower left bit of things. 
-#I used to go on holiday there as a child. Fans of Poldark might also know it.
+## have a nice look at the lower left bit of things. 
+## I used to go on holiday there as a child. 
+## Fans of Poldark might also know it.
+plot(cornwall_ne)
 
 #Get the bounding box for your polygon
 st_bbox(cornwall_ne)
 
-#WARNING!
-#This bounding box outcome is NOT in the right format for your query to ERA (see below); the coordinate pairs are 'flipped'
-#Quick tip - take a coordinate pair and put it in Google Maps to see if it's anywhere near your study area
+#######################
+## WARNING!
+## This bounding box outcome is NOT in the right format 
+## for your query to ERA (see below); the coordinate 
+## pairs are 'flipped'
+#######################
 
-#To send a data request, you make the list of the information for the request 
-#then, you send the request. Note the two different chunks of script for this.
-#The documentation in the ECMWF R package is there, but not awesome.
+## Quick tip - take a coordinate pair and put it in 
+## Google Maps to see if it's anywhere near your study area
 
-#Go to your user profile on Copernicus, and accept ALL the licenses. Second Tab!
+## To send a data request, you make the list of the 
+## information for the request 
+## then, you send the request. Note the two different 
+## chunks of script for this.
+## The documentation in the ECMWF R package is there, 
+## but not awesome.
+
+## Go to your user profile on Copernicus, 
+## and accept ALL the licenses. Second Tab!
 request <- list(
   "dataset_short_name" = "reanalysis-era5-land-monthly-means",
   "format" = "netcdf",
@@ -262,27 +278,30 @@ request <- list(
   "area" = "49.959133/-5.715647/50.922991/-4.180043"
 )
 wf_request(request = request)
+```
 
-#This may take a little time. When it has chugged through the data, it will put
-# it in some random place on your harddrive. I have no great solution for this.
-#Just go and find it and unzip it to your working directory to continue
+This may take a little time. When it has chugged through the data, it will put  it in some random place on your harddrive. I have no great solution for this. Just go and find it and unzip it to your working directory to continue.
 
-#Okay, so it's a NetCDF file - picture a stack of gridded maps of your data,
-#one for each timeslice. Let's find the data, see if we have done this right, and then plot a timeslice.
+The file that you've downloaded is a NetCDF file picture this as a stack of gridded maps of your data, one for each timeslice. Let's find the data, see if we have done this right, and then plot a timeslice.
 
+```{r, eval=FALSE}
 test_r<-rast("data_stream-mnth.nc")
 plot(test_r[[1]])
 
-#If you used the Cornwall bounding box, you should see a very large pixel version of Cornwall
+## If you used the Cornwall bounding box, you 
+## should see a very large pixel version of Cornwall
 
-#Extracting that one time slice and changing it to a dataframe for plotting reasons
+## Extracting that one time slice and changing it to a 
+## dataframe for plotting reasons
 tr<-rast(test_r[[1]])
 df <- as.data.frame(test_r[[1]], xy = TRUE)
 
-# Rename columns if needed (e.g., if the variable name is "temp")
+## Rename columns if needed 
+## (e.g., if the variable name is "temp")
 colnames(df) <- c("x", "y", "Temp (K)")
 
-#Making both our vector map of Cornwall and our dataframe into plottable objects for ggplot
+## Making both our vector map of Cornwall and our dataframe
+## into plotable objects for ggplot
 cw<-vect(cornwall_ne)
 df2<-rast(df)
 
@@ -293,6 +312,7 @@ ggplot()+
   geom_sf(data = cw, color="black",
           fill=NA, size=0.25)+
   theme_bw()
+```
 
 Your plot might look a bit like this!
 
@@ -301,8 +321,9 @@ Your plot might look a bit like this!
 </center>
 
 
-#Plot a variable over time 
-#This takes a lot of fiddling with the NetCDF file
+Next we will plot a variable over time  (*note: This takes a lot of fiddling with the NetCDF file*)
+
+```{r, eval=FALSE}
 our_nc_data <- nc_open("data_stream-mnth.nc")
 print(our_nc_data)
 attributes(our_nc_data$var)
@@ -312,7 +333,10 @@ nlat <- dim(lat)
 lon <- ncvar_get(our_nc_data, "longitude")
 time <- ncvar_get(our_nc_data, "valid_time")
 head(time)
-tunits <- ncatt_get(our_nc_data, "valid_time", "units")#Tells you what the time units are - these are funky, check it out!
+
+## Tells you what the time units are - 
+## these are funky, check it out!
+tunits <- ncatt_get(our_nc_data, "valid_time", "units")
 
 time_obs <- as.POSIXct(time, origin = "1970–01–01", tz="GMT")
 origin <- sub(".*since ", "", tunits)
@@ -344,23 +368,23 @@ head(t2p_obs)
 #change column names
 colnames(t2p_obs) <- c("Long","Lat","Date","t2m", "tp")
 
-#This is a very ugly plot, but you can make it functional - this is over 40K data points on a plot
+#This is a very ugly plot, but you can make it functional 
+## - this is over 40K data points on a plot
   ggplot(data=t2p_obs, aes(x=Date, y=t2m)) +
   geom_point(size=1) +
   geom_line(size=0.5) +
-  labs(title="Time series of monthly avearaged hourly temperature (K) in Cornwall from ERA-5, 2022", 
+  labs(title="Time series of monthly avearaged hourly
+       temperature (K) in Cornwall from ERA-5, 2022", 
        x = "Year",
        y = "Mean Temperature (°K)")
-
-
-
+```
 
 
 
 
 # Section 4: Additional climate resources and caveats
 
-### EO vs Weather station data
+## EO vs Weather station data
 
 EO - Earth Observation - primarily satellite data - from 'looking down' onto things (also called EOS data - earth observation system data)
 
@@ -372,7 +396,7 @@ What if there's lots of clouds? What if cloud cover prevents accurate readings i
 
 Lots of products available, always a lag because someone has to process and QA/QC before you can use it
 
-### Weather Station Data
+## Weather Station Data
 
 Point based data that often gets interpolated to represent irregular region shapes - great if you have lots of stations, less great with sparse coverage.
 
@@ -394,11 +418,11 @@ ERA - large climate modeled runs and even counterfactuals
 
 Copernicus - European entry point for gridded and processed data sets, model outputs
 
-### Some climate resources
+## Some climate resources
 
-**PRISM (Parameter-elevation Regressions on Independent Slopes Model)**
+### PRISM (Parameter-elevation Regressions on Independent Slopes Model)
 
-https://prism.oregonstate.edu/data/
+[https://prism.oregonstate.edu/data/](https://prism.oregonstate.edu/data/)
 
 - Gridded data for the continental/contiguous/coterminus US (CONUS)
 - Hosted at Oregon State
@@ -413,9 +437,10 @@ https://prism.oregonstate.edu/data/
 </center>
 
 ------------------------------------------------------------------------
-**DAYMET**
 
-https://daymet.ornl.gov/
+### DAYMET
+
+[https://daymet.ornl.gov/](https://daymet.ornl.gov/)
 
 - Data product interpolated and extrapolated from daily meteorological observations
 - Useful in the USA – does include PR and HI
@@ -428,9 +453,10 @@ https://daymet.ornl.gov/
 </center>
 
 ------------------------------------------------------------------------
-**Terra Climate – Climatology Lab**
 
-https://www.climatologylab.org/terraclimate.html
+### Terra Climate – Climatology Lab
+
+[https://www.climatologylab.org/terraclimate.html](https://www.climatologylab.org/terraclimate.html)
 
 - Monthly climate and climatic water balance for global terrestrial surfaces from 1950-present
 - 4km resolution
@@ -444,9 +470,10 @@ https://www.climatologylab.org/terraclimate.html
 </center>
 
 ------------------------------------------------------------------------
-**gridMET – Climatology Lab**
 
-https://www.climatologylab.org/gridmet.html
+### gridMET – Climatology Lab
+
+[https://www.climatologylab.org/gridmet.html](https://www.climatologylab.org/gridmet.html)
 
 - 4km resolution
 - Contiguous US and southern British Columbia
@@ -458,9 +485,10 @@ https://www.climatologylab.org/gridmet.html
 </center>
 
 ------------------------------------------------------------------------
-**WorldClim**
 
-https://www.worldclim.org
+### WorldClim
+
+[https://www.worldclim.org](https://www.worldclim.org)
 
 - Climate normals - 20-30 year periods and projections
 - Monthly means; basis for bioclim variables originally - widely used, also originally used PRISM-like interpolated data
@@ -468,9 +496,10 @@ https://www.worldclim.org
 - Useful for easy flexible comparisons across landscapes, for climate scenario comparisons, ecological modeling
 
 ------------------------------------------------------------------------
-**Landsat Collection Surface Temperature**
 
-https://earthexplorer.usgs.gov
+### Landsat Collection Surface Temperature
+
+[https://earthexplorer.usgs.gov](https://earthexplorer.usgs.gov)
 
 - Remotely sensed satellite imagery
 - Global coverage

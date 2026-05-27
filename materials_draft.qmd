@@ -58,14 +58,14 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 ### Introduction to Git
 
-- [Coming Soon! -- with EEID]()
+- [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html#introduction-to-github-through-r)
 
 <br>
 
 
 ### Introduction to Data Types and Sources
 
-- [Coming Soon! -- with EEID]()
+- [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html)
 
 <br> 
 

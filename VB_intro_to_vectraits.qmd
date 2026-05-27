@@ -200,6 +200,8 @@ If a required column is missing, file may fail to upload without any error
 
 ## VecTraits Template
 
+EXERCISE: Take a moment to download the VecTraits template
+
 <center>
 ![](graphics/Intro_VecTraits_14.jpg)
 </center>
@@ -358,6 +360,14 @@ If a required column is missing, file may fail to upload without any error
 <center>
 ![](graphics/Intro_VecTraits_16.jpg)
 </center>
+
+## Downloading Data from VecTraits
+*Exercise: search the database and download a dataset*
+
+- Choose a vector (or trait) and search the database
+- Review search results
+- Find a dataset and view details
+- Download and view dataset on your computer
 
 ## Contributing Data to VecTraits
 

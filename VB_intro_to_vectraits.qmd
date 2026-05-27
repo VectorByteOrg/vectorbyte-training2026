@@ -202,6 +202,7 @@ If a required column is missing, file may fail to upload without any error
 ![](graphics/Intro_VecTraits_7.jpg)
 </center>
 
+
 ## Study Traits
 
 - What is the main trait or outcome being measured in your study?
@@ -354,6 +355,14 @@ If a required column is missing, file may fail to upload without any error
 <center>
 ![](graphics/Intro_VecTraits_17.jpg)
 </center>
+
+## Common Sources of Upload Errors
+
+- Missing required columns
+- Special characters and accents (e.g., check citations, units, and names)
+- Incorrect character type for column (e.g., characters in numeric)
+- Autofill for unique ID or citation columns (e.g., spreadsheet autofill options will increase numbers incrementally)
+- If there are multiple errors, may not get a specific warning
 
 ## Citing VecTraits/Data Ecosystem
 

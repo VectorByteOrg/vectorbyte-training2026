@@ -183,7 +183,7 @@ The following is your opportunity to run through the experience of acquiring the
 
 THIS IS R SCRIPT PASTED IN HERE
 
-#Sadie is seal clubbing scripts to try to download stuff from ERA 5
+#Sadie Ryan - download climate data from ERA 5
 
 setwd("R:/Ryan_Lab/VectorByte")
 
@@ -209,7 +209,7 @@ library(tidyterra)
 
 #Go to the link https://www.ecmwf.int/, see login on top right,
 #Click it, go to Register New User - do that. 
-#I am sjryan@ufl.edu - PlasticFish99!
+
 
 #Validate from email link 
 
@@ -239,7 +239,7 @@ plot(cornwall_ne) #have a nice look at the lower left bit of things.
 st_bbox(cornwall_ne)
 
 #WARNING!
-#This bounding box outcome is NOT in the right format for your query to ERA (see below); the coordinate pairs are 'flipped'.
+#This bounding box outcome is NOT in the right format for your query to ERA (see below); the coordinate pairs are 'flipped'
 #Quick tip - take a coordinate pair and put it in Google Maps to see if it's anywhere near your study area
 
 #To send a data request, you make the list of the information for the request 
@@ -301,8 +301,8 @@ Your plot might look a bit like this!
 </center>
 
 
-#Plot a variable over time why not
-#This takes a lot of fiddling with the NetCDF file, so hold on to your butts
+#Plot a variable over time 
+#This takes a lot of fiddling with the NetCDF file
 our_nc_data <- nc_open("data_stream-mnth.nc")
 print(our_nc_data)
 attributes(our_nc_data$var)

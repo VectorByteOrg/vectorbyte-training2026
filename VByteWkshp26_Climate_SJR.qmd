@@ -296,7 +296,9 @@ ggplot()+
 
 Your plot might look a bit like this!
 
-ADD THE PRETTY PLOT HERE - 
+<center>
+![](graphics/CornwalKelvinMap.jpeg)
+</center>
 
 
 #Plot a variable over time why not

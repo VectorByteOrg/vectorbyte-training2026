@@ -173,6 +173,8 @@ We can get more complex/realistic models...
 ![](graphics/SIR_2.jpg)
 </center>
 
+H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
+
 -----------------------------------------------------------------------
 
 But with every parameter added, more data is needed!
@@ -181,11 +183,20 @@ But with every parameter added, more data is needed!
 ![](graphics/SIR_3.jpg)
 </center>
 
+H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
+a=biting rate, b=vector to host transmission success (proportion of bites), d=recovery
+
+
 -----------------------------------------------------------------------
 
 <center>
 ![](graphics/SIR_4.jpg)
 </center>
+
+H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
+a=biting rate, b=vector to host transmission success (proportion of bites), d=recovery,
+c=host to vector transmission success (proportion of bites), P=extrinsic incubation period,
+$\mu$=adult vector mortality rate
 
 ## $R_0$: Directly-Transmitted Pathogen
 
@@ -264,6 +275,10 @@ Different traits have different curves
 ------------------------------------------------------------------------
 
 Thermal limits are useful for predictions and mapping
+<center>
+![](graphics/Ryan_stephensi.jpg){width="70%"}
+</center>
+Mapping current and future thermal limits to suitability for malaria transmission by the invasive mosquito *Anopheles stephensi*. Ryan *et al*. 2023. Malaria Journal.
 
 ## Estimating TPCs
 

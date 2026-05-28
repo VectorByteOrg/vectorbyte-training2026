@@ -518,45 +518,42 @@ Seems to get released by calendar year (up to end of last year)</p>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="do">## these are funky, check it out!</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>tunits <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"valid_time"</span>, <span class="st">"units"</span>)</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>time_obs <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(time, <span class="at">origin =</span> <span class="st">"1970–01–01"</span>, <span class="at">tz=</span><span class="st">"GMT"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">".*since "</span>, <span class="st">""</span>, tunits)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#as.numeric(as.character("1609459200"))</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># convert time -- split the time units string into fields</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>t_ustr <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(tunits<span class="sc">$</span>value, <span class="st">" "</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>t_dstr <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="fu">unlist</span>(t_ustr)[<span class="dv">3</span>], <span class="st">"-"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(t_dstr) <span class="sc">+</span> <span class="fu">dseconds</span>(time)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>time<span class="ot">&lt;-</span>date</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>t2m_array <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"t2m"</span>) </span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>fillvalue <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"t2m"</span>, <span class="st">"_FillValue"</span>)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>t2m_array[t2m_array<span class="sc">==</span>fillvalue<span class="sc">$</span>value] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>tp_array <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"tp"</span>) </span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>fillvalue_tp <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"tp"</span>, <span class="st">"_FillValue"</span>)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>tp_array[tp_array<span class="sc">==</span>fillvalue_tp<span class="sc">$</span>value] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># convert time -- split the time units string into fields</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>t_ustr <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(tunits<span class="sc">$</span>value, <span class="st">" "</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>t_dstr <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(<span class="fu">unlist</span>(t_ustr)[<span class="dv">3</span>], <span class="st">"-"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(t_dstr) <span class="sc">+</span> <span class="fu">dseconds</span>(time)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>time<span class="ot">&lt;-</span>date</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>t2m_array <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"t2m"</span>) </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>fillvalue <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"t2m"</span>, <span class="st">"_FillValue"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>t2m_array[t2m_array<span class="sc">==</span>fillvalue<span class="sc">$</span>value] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>tp_array <span class="ot">&lt;-</span> <span class="fu">ncvar_get</span>(our_nc_data, <span class="st">"tp"</span>) </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>fillvalue_tp <span class="ot">&lt;-</span> <span class="fu">ncatt_get</span>(our_nc_data, <span class="st">"tp"</span>, <span class="st">"_FillValue"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>tp_array[tp_array<span class="sc">==</span>fillvalue_tp<span class="sc">$</span>value] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>lonlattime <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">expand.grid</span>(lon,lat,time))</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lonlattime)</span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>lonlattime <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">expand.grid</span>(lon,lat,time))</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lonlattime)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>t2m_vec_long <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(t2m_array)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>tp_vec_long <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(tp_array)</span>
 <span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>t2m_vec_long <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(t2m_array)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>tp_vec_long <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(tp_array)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>t2p_obs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(lonlattime, t2m_vec_long, tp_vec_long))</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(t2p_obs)</span>
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>t2p_obs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(lonlattime, t2m_vec_long, tp_vec_long))</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(t2p_obs)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">#change column names</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(t2p_obs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Long"</span>,<span class="st">"Lat"</span>,<span class="st">"Date"</span>,<span class="st">"t2m"</span>, <span class="st">"tp"</span>)</span>
 <span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#change column names</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(t2p_obs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Long"</span>,<span class="st">"Lat"</span>,<span class="st">"Date"</span>,<span class="st">"t2m"</span>, <span class="st">"tp"</span>)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#This is a very ugly plot, but you can make it functional </span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="do">## - this is over 40K data points on a plot</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data=</span>t2p_obs, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>t2m)) <span class="sc">+</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Time series of monthly avearaged hourly</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="st">       temperature (K) in Cornwall from ERA-5, 2022"</span>, </span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mean Temperature (°K)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#This is a very ugly plot, but you can make it functional </span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="do">## - this is over 40K data points on a plot</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data=</span>t2p_obs, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>t2m)) <span class="sc">+</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Time series of monthly avearaged hourly</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="st">       temperature (K) in Cornwall from ERA-5, 2022"</span>, </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mean Temperature (°K)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section-4-additional-climate-resources-and-caveats" class="level1">

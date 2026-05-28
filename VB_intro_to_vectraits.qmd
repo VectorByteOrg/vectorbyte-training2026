@@ -351,6 +351,7 @@ EXERCISE: Take a moment to download the VecTraits template
 </center>
 
 ## Downloading Data from VecTraits
+
 <center>
 ![](graphics/Intro_VecTraits_15.jpg)
 </center>

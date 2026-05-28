@@ -177,7 +177,7 @@ H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
 
 -----------------------------------------------------------------------
 
-But with every parameter added, more data is needed!
+But with every parameter added, more data are needed!
 
 <center>
 ![](graphics/SIR_3.jpg)

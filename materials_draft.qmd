@@ -63,7 +63,7 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 <br>
 
 
-### Introduction to Data Types and Sources
+### Introduction to Data Types and Manipulation with R
 
 - [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html)
 
@@ -83,7 +83,8 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 ###  The VecTraits AI assisted digitization pipeline
 
-- [Coming Soon!]()
+- [Lecture Slides](https://docs.google.com/presentation/d/1Dxj0pvyElEORZre7MROznx64QMAo8rSgrBoZk5-oSL8/edit?usp=sharing)
+- [Curator Site](http://alexandria.crc.nd.edu/) (login with your [ORCID ID](https://orcid.org/))
 
 <br>
 

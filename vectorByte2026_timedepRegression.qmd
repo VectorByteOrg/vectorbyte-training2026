@@ -1,8 +1,14 @@
 ---
 title: "Time Series Linear Regression and Automated Reports"
-author: "Alicia Surratt"
+author:
+  - name: 
+      given: Alicia
+      family: Surratt
+    affiliation: Virginia Tech and VectorByte
+citation: true
+date: 2026-05-29
+date-format: long
 format: html
-editor: visual
 error: true
 execute:
   message: false
@@ -19,11 +25,11 @@ library(tidyverse)
 
 Remember that simple linear regression fits a straight line through data by minimizing the distance between the fitted line and the actual data points (Ordinary Least Squares approach we explored in the NLLS session).
 
-![](images/clipboard-659488832.png){fig-align="center" width="283"}
+![](graphics/clipboard-659488832.png){fig-align="center" width="283"}
 
 While we often use a straight line for demonstration, also remember that linear models can be used to model data that doesn't *look* linear by incorporating higher order terms or using categorical predictors.
 
-![](images/clipboard-2514654178.png){fig-align="center"}
+![](graphics/clipboard-2514654178.png){fig-align="center"}
 
 Linear regression comes with certain assumptions about our data, and we check that the fitted model meets those assumptions using graphical methods or tests. Those assumptions are:
 
@@ -131,13 +137,13 @@ The way we approach modeling time series data (and data in general) often depend
 
 When we want to extract information about a system as it exists now or existed in the past, our goal is to use the model for *inference*. In this case, we may choose to focus more on the validity of the model within the data we already have. This helps us to characterize structures of interest within the data set (e.g. seasonal patterns, annual trends).
 
-![Decomposition plot showing the seasonal and trend structures present in a time series data set](images/stlPlot.png){fig-align="center" width="507"}
+![Decomposition plot showing the seasonal and trend structures present in a time series data set](graphics/stlPlot.png){fig-align="center" width="507"}
 
 #### Prediction
 
 When we want to anticipate how a system will exist in the future, our goal is to use the model for *prediction*. In this case, we may choose the focus more on how well the model predicts responses from data we did not use to fit the model. This helps provide an idea about how the model will predict the future, which can be especially useful for people in resource management positions.
 
-![Example of a simple forecast and the uncertainty around it. Found [here](https://stackoverflow.com/questions/29146353/how-to-interpret-forecasting-models-in-r).](images/clipboard-2136995412.png){fig-align="center" width="538"}
+![Example of a simple forecast and the uncertainty around it. Found [here](https://stackoverflow.com/questions/29146353/how-to-interpret-forecasting-models-in-r).](graphics/clipboard-2136995412.png){fig-align="center" width="538"}
 
 Our practical will focus primarily on the inferential case.
 :::
@@ -248,11 +254,11 @@ summary(tempregAuto)
 
 When the coefficient associated with an autoregressive variable is greater than 1, we call the time series an "exploding series", because this means that the observations are going to become exponentially far away from one another over time. In this case, an autoregressive term is often not very useful in our model.
 
-![Exploding series, $\beta_1$ = 1.02](images/clipboard-2418282490.png){fig-align="center"}
+![Exploding series, $\beta_1$ = 1.02](graphics/clipboard-2418282490.png){fig-align="center"}
 
 On the other hand, when the coefficient is less than 1, the series is likely "stationary". This means that the values tend to move back toward the mean value when they start to get far away from the mean. In these cases, autoregressive terms are very useful and informative.
 
-![Stationary series, $\beta_1$ = 0.8](images/clipboard-3536036317.png)
+![Stationary series, $\beta_1$ = 0.8](graphics/clipboard-3536036317.png)
 
 In our model, the coefficient was about 0.64, so the NY temperatures tend to regress toward the mean value over time!
 :::
@@ -299,7 +305,7 @@ The drawback to this approach is the number of dummy variables that will be intr
 
 On the other hand, if you want to simply account for seasonality so you can focus on other information in the data, we can use trigonometric (sine and cosine) seasonality terms. We can represent any smooth periodic function as the sum of sines and cosines. Remember what the sine and cosine functions look like? They repeat every period ($\frac{2\pi}{k}$).
 
-![](images/clipboard-2237205476.png)
+![](graphics/clipboard-2237205476.png)
 
 It can be harder to directly compare these continuous functions to say that one season is statistically warmer than another, for example, but they require only 2 degrees of freedom! Adding these into the linear regression model from earlier looks like
 
@@ -361,4 +367,4 @@ In cases where we expect to keep generating new data in a data set or where we e
 
 In the next activity, we will use the VecDyn API to access mosquito population data collected over several years in Suffolk, VA to produce a report that explores and models the data. These data continue to be collected, so there's a good chance we would want to repeat any analyses we did with these data in the future.
 
-Download and open the 'reproducibleReport.qmd' file to get started using the skills you learned in this practical to build a simple reproducible report!
+Download and open the [reproducibleReport.qmd](reproducibleReport.qmd) file to get started using the skills you learned in this practical to build a simple reproducible report!

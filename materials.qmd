@@ -111,15 +111,11 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 <br>
 
-### Introduction to Time Dependent Data
+### Introduction to Time Dependent Data and reproducible data pipelines
 
-- [Coming Soon!]()
-
-<br>
-
-### Simple Time-dependent data pipeline
-
-- [Coming Soon!]()
+- [Practical](vectorByte2026_timedepRegression.qmd)
+- [Example reproducible report](reproducibleReport.qmd)
+- [Git repository](https://github.com/VectorByteOrg/vectorbyte-training2026)
 
 <br>
 

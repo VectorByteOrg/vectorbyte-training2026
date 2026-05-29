@@ -1,6 +1,12 @@
 ---
 title: "Reproducible Report"
-author: "VectorByte 2026"
+author:
+  - name: 
+      given: VB
+      family: Network
+    affiliation: VectorByte 
+citation: true
+date: 2026-05-29
 format: html
 editor: visual
 ---
@@ -136,7 +142,7 @@ ggplot(summaryDat, aes(x = year, y = mean))+
 
 ```
 
-The year `{r} summaryDat$year[which.max(summaryDat$mean)]` had the highest average mosquito abundance. The year `{r} summaryDat$year[which.max(summaryDat$outliers)]` had the most outlier abundance observations. There were `{r} length(boxplot.stats(mosqDFcomb$totalMos)$out)` total outliers in the data set.
+The year `{r} summaryDat$year[which.max(summaryDat$mean)]` had the highest average mosquito abundance, with an average of `r max(summaryDat$mean)` mosquitoes observed. The year `{r} summaryDat$year[which.max(summaryDat$outliers)]` had the most outlier abundance observations. There were `{r} length(boxplot.stats(mosqDFcomb$totalMos)$out)` total outliers in the data set.
 
 **Make one more plot that might be interesting and add some text to describe it using inline code**
 
@@ -268,4 +274,4 @@ It is always good to think about how our models do well and where they fall shor
 
 ## Challenge
 
-Using the skills you learned in the time-dependent covariate module, gather mean monthly temperature data for Suffolk, VA for the appropriate time frame and include temperature as a covariate in your model.
+Using the skills you learned in the time-dependent covariate module, gather mean monthly temperature data for Suffolk, VA for the appropriate time frame and include temperature as a covariate in your model. Consider transforming the response variable (e.g., taking a square-root) to address non-homoskedastic elements of the data. 

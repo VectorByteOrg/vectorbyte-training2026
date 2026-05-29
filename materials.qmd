@@ -7,6 +7,8 @@ format:
     html-math-method: katex
 ---
 
+<br>
+
 ## Pre-work and set-up
 
 ### Pre-workshop reading
@@ -20,7 +22,6 @@ Before attending the workshop, we request that you read the following three pape
 3. [The Role of Vector Trait Variation in Vector-Borne Disease Dynamics](https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2020.00189/full)
 
 <br>
-<br>
 
 
 ### Hardware and Software
@@ -31,7 +32,6 @@ Before attending the workshop, we request that you read the following three pape
 
 - We also host all materials on [GitHub](https://github.com/), and all students should have a GitHub account. 
 
-<br>
 <br>
 
 
@@ -50,4 +50,76 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 ## Live Workshop Materials
 
-Coming Soon
+### Introduction to the Workshops
+
+- [Lecture Slides](VB_Welcome.qmd)
+
+<br> 
+
+### Introduction to Git
+
+- [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html#introduction-to-github-through-r)
+
+<br>
+
+
+### Introduction to Data Types and Manipulation with R
+
+- [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html)
+
+<br> 
+
+### Introduction to Traits
+
+- [Lecture Slides](VB_intro_to_traits.qmd)
+
+<br> 
+
+### Intro to the VecTraits Database
+
+- [Lecture](VB_intro_to_vectraits.qmd)
+
+<br>
+
+###  The VecTraits AI assisted digitization pipeline
+
+- [Lecture Slides](https://docs.google.com/presentation/d/1Dxj0pvyElEORZre7MROznx64QMAo8rSgrBoZk5-oSL8/edit?usp=sharing)
+- [Curator Site](http://alexandria.crc.nd.edu/) (login with your [ORCID ID](https://orcid.org/))
+
+<br>
+
+### Simple TPC fitting pipeline using NLLS
+
+- [Practical](vectorByte2026_NLLS.qmd)
+- [Dataset access code](code/VecTraits_Dataset_Access.R)
+
+<br>
+
+
+### Introduction to the VecDyn database
+
+-  [Intro to VecDyn (slides)](https://docs.google.com/presentation/d/1GZuAR8zFRFJaR1QConiNHG5v71W4psAd/edit?usp=sharing&ouid=103950001421882927979&rtpof=true&sd=true)
+-   [The VecDyn website](https://vectorbyte.crc.nd.edu/vecdyn-datasets)
+-   [About the VecDyn API](https://www.vectorbyte.org/blog/vecdyn-api)
+
+
+<br> 
+
+### Environmental covariates for time and space dependent data
+
+- [Guided Introduction](VByteWkshp26_Climate_SJR.qmd)
+
+<br>
+
+### Introduction to Time Dependent Data
+
+- [Coming Soon!]()
+
+<br>
+
+### Simple Time-dependent data pipeline
+
+- [Coming Soon!]()
+
+<br>
+

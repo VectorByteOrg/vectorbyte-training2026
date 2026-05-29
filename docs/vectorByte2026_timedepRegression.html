@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alicia Surratt">
+<meta name="dcterms.date" content="2026-05-29">
+
+<title>Time Series Linear Regression and Automated Reports – VectorByte Training 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-axe/axe-check.js" type="module"></script>
+<script id="quarto-axe-checker-options" type="text/plain">dHJ1ZQ==</script>
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-eca17e7a9c05442418a384757bbe5f76.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./graphics/vblogoedit.png" alt="VectorByte Logo" class="navbar-logo light-content">
+    <img src="./graphics/vblogoedit.png" alt="VectorByte Logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">VectorByte Training 2026</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./schedule2026.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./materials.html"> 
+<span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/VectorByteOrg/vectorbyte-training2026"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On This Page</h2>
+   
+  <ul>
+  <li><a href="#linear-regression-for-time-series-data" id="toc-linear-regression-for-time-series-data" class="nav-link active" data-scroll-target="#linear-regression-for-time-series-data">Linear Regression for Time Series Data</a>
+  <ul class="collapse">
+  <li><a href="#linear-regression-basics" id="toc-linear-regression-basics" class="nav-link" data-scroll-target="#linear-regression-basics">Linear Regression Basics</a></li>
+  <li><a href="#time-series-data" id="toc-time-series-data" class="nav-link" data-scroll-target="#time-series-data">Time Series Data</a>
+  <ul class="collapse">
+  <li><a href="#example-air-temperature-in-new-york" id="toc-example-air-temperature-in-new-york" class="nav-link" data-scroll-target="#example-air-temperature-in-new-york">Example: Air temperature in New York</a></li>
+  <li><a href="#example-monthly-uk-deaths-due-to-lung-infection" id="toc-example-monthly-uk-deaths-due-to-lung-infection" class="nav-link" data-scroll-target="#example-monthly-uk-deaths-due-to-lung-infection">Example: Monthly UK deaths due to lung infection</a></li>
+  </ul></li>
+  <li><a href="#time-dependent-linear-regression" id="toc-time-dependent-linear-regression" class="nav-link" data-scroll-target="#time-dependent-linear-regression">Time-Dependent Linear Regression</a></li>
+  <li><a href="#automated-fitting-pipelines" id="toc-automated-fitting-pipelines" class="nav-link" data-scroll-target="#automated-fitting-pipelines">Automated Fitting Pipelines</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Time Series Linear Regression and Automated Reports</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Alicia Surratt </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Virginia Tech and VectorByte
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="linear-regression-for-time-series-data" class="level1">
+<h1>Linear Regression for Time Series Data</h1>
+<section id="linear-regression-basics" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-basics">Linear Regression Basics</h2>
+<p>Remember that simple linear regression fits a straight line through data by minimizing the distance between the fitted line and the actual data points (Ordinary Least Squares approach we explored in the NLLS session).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphics/clipboard-659488832.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="283"></p>
+</figure>
+</div>
+<p>While we often use a straight line for demonstration, also remember that linear models can be used to model data that doesn’t <em>look</em> linear by incorporating higher order terms or using categorical predictors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphics/clipboard-2514654178.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Linear regression comes with certain assumptions about our data, and we check that the fitted model meets those assumptions using graphical methods or tests. Those assumptions are:</p>
+<ol type="1">
+<li>Linearity: there is a straight line relationship between the predictors and the response</li>
+<li>Normality: the residuals are normally distributed</li>
+<li>Homoscedasticity: the residuals have constant variance</li>
+<li><mark><strong>Independence: observations are independent of one another</strong></mark></li>
+</ol>
+<p>Independence of observations means that the value of one observation does not contain information that would help us predict the next observation. For example, if we were to measure the weights of 100 random, unrelated bears, there is no reason to think that one bear’s weight would help us predict the next bear’s weight with any particular accuracy. On the other hand, if we were to measure those same bears on a monthly basis for 5 years to follow their weight gain before hibernation, their weights in March would be heavily dependent on their weights in January. In other words, the heaviest bears often remain the heaviest over time.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Side Quest: Fat Bear Week
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://www.nps.gov/katm/learn/nature/fat-bear-week-past-and-present.htm">Fat Bear Week Hall of Fame</a></p>
+</div>
+</div>
+</section>
+<section id="time-series-data" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-data">Time Series Data</h2>
+<p>There are many kinds of data that do not fit the independence assumption, but time series cases like the bear example are a common example. Data that are collected on the same individual, population, or system over time inherently carry information about the data that will be collected in the future. While this poses a challenge for linear regression modeling, it also serves as a source of information that we as modelers can capitalize on!</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Time-Dependent vs.&nbsp;Time Series Data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Time-dependent data include any data where the relationship between the predictors and response changes over time. All time-dependent data violates the independence assumption of linear regression and requires special additions to the models to accommodate the time-dependence.</p>
+<p>Time series data is one type of time-dependent data. Time series data refers to data collected at evenly spaced intervals over time with no missing data - sounds nice, right? 😆 In vector-borne disease research we are rarely able to produce such perfect data sets, so many time series methods cannot be used directly with our data. However, methods exist to adapt time series models to these <em>almost</em> time series data sets.</p>
+</div>
+</div>
+<section id="example-air-temperature-in-new-york" class="level3">
+<h3 class="anchored" data-anchor-id="example-air-temperature-in-new-york">Example: Air temperature in New York</h3>
+<p>This graph shows daily air temperature measurements in New York from May to September in a given year. Notice how day-to-day temperatures from nearby days are generally more similar than temperatures on days that are farther away from each other.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nyTemps <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">nrow</span>(airquality),<span class="dv">1</span>),</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">temp =</span> airquality<span class="sc">$</span>Temp)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nyTemps, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> temp))<span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="example-monthly-uk-deaths-due-to-lung-infection" class="level3">
+<h3 class="anchored" data-anchor-id="example-monthly-uk-deaths-due-to-lung-infection">Example: Monthly UK deaths due to lung infection</h3>
+<p>This graph shows the monthly number of deaths from lung infection in the UK from 1947-1979. Notice how a yearly pattern seems to emerge.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ld<span class="ot">&lt;-</span><span class="fu">as.vector</span>(ldeaths)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ld, <span class="at">xlab=</span><span class="st">"month"</span>, <span class="at">ylab=</span><span class="st">"deaths"</span>, <span class="at">type=</span><span class="st">"l"</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We call the relationship between time series observations <em>autocorrelation.</em> This just means that one observation is correlated with (or related to) the next one. We can visualize and quantify the amount of autocorrelation between observations. A simple way to observe autocorrelation in our data is to plot the response (<span class="math inline">\(Y\)</span>) against the responses from the previous time point (<span class="math inline">\(Y_{t-1}\)</span>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a data set with the deaths data and the lag-1 response</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>autoDat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(ldeaths),<span class="dv">1</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">deaths =</span> <span class="fu">as.vector</span>(ldeaths),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">lagDeaths =</span> <span class="fu">lag</span>(<span class="fu">as.vector</span>(ldeaths),<span class="dv">1</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the NA value that is introduced</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>autoDat <span class="ot">&lt;-</span> autoDat <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(lagDeaths)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the autocorrelation</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>corr <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(autoDat<span class="sc">$</span>deaths, autoDat<span class="sc">$</span>lagDeaths), <span class="dv">2</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the relationship between deaths this month and last month</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> autoDat, <span class="fu">aes</span>(<span class="at">x =</span> deaths, <span class="at">y =</span> lagDeaths))<span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">1500</span>, <span class="at">y =</span> <span class="dv">3800</span>, <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"corr = "</span>, corr ),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is a clear linear relationship between the deaths this month and the deaths last month. This is a perfect example of autocorrelation. Values that are further apart can also be autocorrelated. We can visualize the relationships between the current value and all previous ones using an autocorrelation function (ACF) plot. We call it an ACF plot because the autocorrelation function is just:</p>
+<p><span class="math display">\[
+r(\ell) = cor(Y_t, Y_{t-\ell}),
+\]</span></p>
+<p>where <span class="math inline">\(Y_{t-\ell}\)</span> is the lag-<span class="math inline">\(\ell\)</span> response value. In other words, we compute the correlation between the current response and each of the previous ones. Let’s look at an ACF plot for the lung infection deaths data and the New York temperature data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deaths data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(ldeaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The seasonal pattern is even more apparent in this plot!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#NY Temps data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(airquality<span class="sc">$</span>Temp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see how “sticky” the temperature data are. The temperatures are still moderately correlated 7 days apart!</p>
+<p>So how do we make use of this additional information (that we often work really hard to get)? We can add structures to our linear regression models to capture the autocorrelation present in our data.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Modeling Goals for Time Series Data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The way we approach modeling time series data (and data in general) often depends on what we hope to do with the model once we fit it. Modeling goals fall into two broad categories:</p>
+<section id="inference" class="level4">
+<h4 class="anchored" data-anchor-id="inference">Inference</h4>
+<p>When we want to extract information about a system as it exists now or existed in the past, our goal is to use the model for <em>inference</em>. In this case, we may choose to focus more on the validity of the model within the data we already have. This helps us to characterize structures of interest within the data set (e.g.&nbsp;seasonal patterns, annual trends).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphics/stlPlot.png" class="img-fluid figure-img" width="507"></p>
+<figcaption>Decomposition plot showing the seasonal and trend structures present in a time series data set</figcaption>
+</figure>
+</div>
+</section>
+<section id="prediction" class="level4">
+<h4 class="anchored" data-anchor-id="prediction">Prediction</h4>
+<p>When we want to anticipate how a system will exist in the future, our goal is to use the model for <em>prediction</em>. In this case, we may choose the focus more on how well the model predicts responses from data we did not use to fit the model. This helps provide an idea about how the model will predict the future, which can be especially useful for people in resource management positions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphics/clipboard-2136995412.png" class="img-fluid figure-img" width="538"></p>
+<figcaption>Example of a simple forecast and the uncertainty around it. Found <a href="https://stackoverflow.com/questions/29146353/how-to-interpret-forecasting-models-in-r">here</a>.</figcaption>
+</figure>
+</div>
+<p>Our practical will focus primarily on the inferential case.</p>
+</section>
+</div>
+</div>
+</section>
+</section>
+<section id="time-dependent-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="time-dependent-linear-regression">Time-Dependent Linear Regression</h2>
+<p>With some small adjustments, we can make linear regression models appropriate for time series data. Remember the basic linear regression model:</p>
+<p><span class="math display">\[
+Y_i = \beta_0 +\beta_1X_i + \varepsilon_i
+\]</span></p>
+<p><span class="math display">\[
+\varepsilon_i \overset{\text{iid}}{\sim} \mathcal{N}(0, \sigma^2),
+\]</span></p>
+<p>where <span class="math inline">\(Y_i\)</span> is the the <span class="math inline">\(i\)</span>th response observation and <span class="math inline">\(X_i\)</span> is the <span class="math inline">\(i\)</span>th predictor observation in the data set, <span class="math inline">\(\beta_0\)</span> is the fitted intercept, and <span class="math inline">\(\beta_1\)</span> is the fitted coefficient associated with <span class="math inline">\(X\)</span>. The residuals are identically and independently distributed.</p>
+<section id="time-dependent-regression" class="level4">
+<h4 class="anchored" data-anchor-id="time-dependent-regression">Time-dependent Regression</h4>
+<p>The simplest thing we can do is to add time as a predictor variable into the model. When we do this, we are accounting for “trends” in the data. Trends are the general pattern or shape over time. Just like any other predictor, we can use transforms of the time variable as well to capture relationships that are not in a straight line.</p>
+<p>Let’s look at this using the NY weather example.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model with time as a predictor</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tempreg <span class="ot">&lt;-</span> <span class="fu">lm</span>(temp <span class="sc">~</span> time, <span class="at">data =</span> nyTemps)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check out the summary</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tempreg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = temp ~ time, data = nyTemps)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-20.730  -6.034   1.177   6.553  18.000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 71.53999    1.42373  50.248  &lt; 2e-16 ***
+time         0.08237    0.01604   5.136 8.55e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.762 on 151 degrees of freedom
+Multiple R-squared:  0.1487,    Adjusted R-squared:  0.1431 
+F-statistic: 26.37 on 1 and 151 DF,  p-value: 8.554e-07</code></pre>
+</div>
+</div>
+<p>The residuals will tell us whether there is any leftover information we haven’t considered. Let’s look at some basic residual plots.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram to check for normality - looks great!</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tempreg<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted vs. Residuals plot to look for patterns - definitely something going on here!</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tempreg<span class="sc">$</span>residuals, <span class="fu">predict</span>(tempreg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The residuals vs.&nbsp;predicted plot shows a clear pattern. That means we left some information out of our model. Remember how the time series was shaped from earlier?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It was slightly curved. We might need to add a quadratic term to help account for that. Let’s do that and look at the plot again.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add time^2 to the data set</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>nyTemps<span class="sc">$</span>timeSq <span class="ot">&lt;-</span> nyTemps<span class="sc">$</span>time<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model with time as a predictor</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tempreg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(temp <span class="sc">~</span> time <span class="sc">+</span> timeSq, <span class="at">data =</span> nyTemps)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check out the summary - the squared term is significant!</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tempreg2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = temp ~ time + timeSq, data = nyTemps)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-15.0361  -4.4327  -0.3043   4.0580  15.7181 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 59.0270983  1.6770700  35.197   &lt;2e-16 ***
+time         0.5667383  0.0502788  11.272   &lt;2e-16 ***
+timeSq      -0.0031453  0.0003162  -9.946   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.825 on 150 degrees of freedom
+Multiple R-squared:  0.487, Adjusted R-squared:  0.4801 
+F-statistic: 71.19 on 2 and 150 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted vs. Residuals plot to look for patterns - better but still weird</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tempreg2<span class="sc">$</span>residuals, <span class="fu">predict</span>(tempreg2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is still something not quite right with our model. We can use the residuals to check whether there is autocorrelation between the observations we have not dealt with in our model (spoiler alert: there is 🙃). Let’s look at an ACF plot of the residuals.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(tempreg2<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Woah! We definitely still have some autocorrelation in our errors, which means we are in violation of the independence assumption. Our model needs more work.</p>
+</section>
+<section id="autoregressive-terms" class="level4">
+<h4 class="anchored" data-anchor-id="autoregressive-terms">Autoregressive Terms</h4>
+<p>We can adjust this model set up slightly to account for autocorrelation between observations. If we replace the <span class="math inline">\(i\)</span> with a <span class="math inline">\(t\)</span> for time and think about our <span class="math inline">\(X\)</span> variable as the lag-1 response (the response from the previous time point), we can re-write this model as</p>
+<p><span class="math display">\[
+Y_t = \beta_0 +\beta_1X_{t-1} + \varepsilon_t
+\]</span></p>
+<p><span class="math display">\[
+\varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(0, \sigma^2)
+\]</span></p>
+<p>We can expand this model to include more lags of the response if necessary and we can add other predictors of interest into the model as well. Notice that all the same assumptions about the residuals still apply when we perform this kind of regression.</p>
+<p>Let’s add in the 1-day lagged temperature as a variable and see if the fit is better</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a lag-1 response to the data set</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nyTemps<span class="sc">$</span>tempLag1 <span class="ot">&lt;-</span> <span class="fu">lag</span>(nyTemps<span class="sc">$</span>temp,<span class="dv">1</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get rid of the NA that was introduced</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>nyTemps <span class="ot">&lt;-</span> nyTemps <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(tempLag1)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit our autoregressive regression model</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>tempregAuto <span class="ot">&lt;-</span> <span class="fu">lm</span>(temp <span class="sc">~</span> time <span class="sc">+</span> timeSq <span class="sc">+</span> tempLag1, <span class="at">data =</span> nyTemps)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The lag is significant as expected!</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tempregAuto)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = temp ~ time + timeSq + tempLag1, data = nyTemps)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-15.2160  -2.9845  -0.2283   3.4592  14.0041 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 21.0736104  3.9104070   5.389 2.73e-07 ***
+time         0.2146061  0.0532549   4.030 8.90e-05 ***
+timeSq      -0.0012187  0.0003149  -3.869 0.000163 ***
+tempLag1     0.6403581  0.0628252  10.193  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.244 on 148 degrees of freedom
+Multiple R-squared:  0.6984,    Adjusted R-squared:  0.6923 
+F-statistic: 114.3 on 3 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exploding Time Series?? TAKE COVER
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When the coefficient associated with an autoregressive variable is greater than 1, we call the time series an “exploding series”, because this means that the observations are going to become exponentially far away from one another over time. In this case, an autoregressive term is often not very useful in our model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphics/clipboard-2418282490.png" class="img-fluid figure-img"></p>
+<figcaption>Exploding series, <span class="math inline">\(\beta_1\)</span> = 1.02</figcaption>
+</figure>
+</div>
+<p>On the other hand, when the coefficient is less than 1, the series is likely “stationary”. This means that the values tend to move back toward the mean value when they start to get far away from the mean. In these cases, autoregressive terms are very useful and informative.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphics/clipboard-3536036317.png" class="img-fluid figure-img"></p>
+<figcaption>Stationary series, <span class="math inline">\(\beta_1\)</span> = 0.8</figcaption>
+</figure>
+</div>
+<p>In our model, the coefficient was about 0.64, so the NY temperatures tend to regress toward the mean value over time!</p>
+</div>
+</div>
+<p>We can see that the lagged temperature variable is highly significant in our model as we expected! Interestingly, the trend now seems less important. Let’s look at the residuals to see if we took care of the autocorrelation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make an ACF plot of the residuals</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(tempregAuto<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is no significant autocorrelation left in the residuals (none of the lines other than the first one go outside the blue lines)! Great! We can still evaluate the other typical residual plots to make sure the other assumptions are met. Let’s look at those.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram to check for normality - looks great!</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tempregAuto<span class="sc">$</span>residuals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted vs. Residuals plot to look for patterns - looks a lot better! No clear patterns</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tempregAuto<span class="sc">$</span>residuals, <span class="fu">predict</span>(tempregAuto))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Try it out!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can add additional lags of the response to improve the model further and account for more autocorrelation when appropriate. <strong>On your own, try adding other lags into the model and look at the results!</strong></p>
+</div>
+</div>
+</section>
+<section id="seasonality" class="level4">
+<h4 class="anchored" data-anchor-id="seasonality">Seasonality</h4>
+<p>Another common feature of time series data is seasonality. Seasonal patterns occur when observations taken at the same time of day, week, month, or year are similar to one another. It creates a “wavy” pattern in the data, like the lung infection deaths example from before. This kind of pattern is very common in arthropod abundance time series, so we will explore ways to deal with it in regression models!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are a few ways of accounting for seasonality in regression models. Which one to choose depends heavily on your modeling goal. If you want to do post hoc comparisons between seasons or you only have a short time course available, it is usually the most straightforward to use a categorical seasonal variable (e.g.&nbsp;month or year). This is also useful if the seasonal pattern is not smooth and jumps around.</p>
+<p>The drawback to this approach is the number of dummy variables that will be introduced to the model. For example, if my data show annual seasonality, I may need to use 11 dummy variables (one for each month of the year with one accounted for in the intercept). If your sample size is small, this can cause a problem.</p>
+<p>On the other hand, if you want to simply account for seasonality so you can focus on other information in the data, we can use trigonometric (sine and cosine) seasonality terms. We can represent any smooth periodic function as the sum of sines and cosines. Remember what the sine and cosine functions look like? They repeat every period (<span class="math inline">\(\frac{2\pi}{k}\)</span>).</p>
+<p><img src="graphics/clipboard-2237205476.png" class="img-fluid"></p>
+<p>It can be harder to directly compare these continuous functions to say that one season is statistically warmer than another, for example, but they require only 2 degrees of freedom! Adding these into the linear regression model from earlier looks like</p>
+<p><span class="math display">\[
+Y_t = \beta_0 + \beta_1sin\left(\frac{2\pi t}{k}\right) + \beta_2cos\left(\frac{2\pi t}{k}\right)+ \varepsilon_t,
+\]</span></p>
+<p>where <span class="math inline">\(k\)</span> is the number of times the cycle repeats in a single period. For example, for monthly data, <span class="math inline">\(k\)</span> = 12 implies an annual cycle. However for daily data, <span class="math inline">\(k\)</span> = 365 implies an annual cycle. Let’s try this approach with the lung infection deaths data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a time variable in the ldeaths data</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tmax<span class="ot">&lt;-</span><span class="fu">length</span>(ldeaths)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span>tmax</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with the sine and cosine terms</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>YX <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ld=</span>ld[<span class="dv">2</span><span class="sc">:</span>tmax], <span class="at">ldpast=</span>ld[<span class="dv">1</span><span class="sc">:</span>(tmax<span class="dv">-1</span>)], <span class="at">t=</span>t,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sin12=</span><span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>t<span class="sc">/</span><span class="dv">12</span>), <span class="at">cos12=</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>t<span class="sc">/</span><span class="dv">12</span>))</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>lunglm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ld <span class="sc">~</span> t <span class="sc">+</span> ldpast <span class="sc">+</span> sin12 <span class="sc">+</span> cos12, <span class="at">data=</span>YX)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The seasonal terms are significant!</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lunglm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ld ~ t + ldpast + sin12 + cos12, data = YX)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-571.83 -105.87   -5.26  131.08 1038.13 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1791.8501   282.5780   6.341 2.36e-08 ***
+t             -4.2156     1.5745  -2.677  0.00935 ** 
+ldpast         0.2018     0.1229   1.641  0.10546    
+sin12        460.1190   102.2890   4.498 2.84e-05 ***
+cos12        419.7233    43.3356   9.685 2.68e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 249.6 on 66 degrees of freedom
+Multiple R-squared:  0.8383,    Adjusted R-squared:  0.8285 
+F-statistic: 85.53 on 4 and 66 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual plots</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lunglm<span class="sc">$</span>residuals) <span class="co"># looks okay</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predict</span>(lunglm), lunglm<span class="sc">$</span>residuals) <span class="co"># looks okay</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(lunglm<span class="sc">$</span>residuals) <span class="co"># Maybe a little left over, but okay</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s look at how well the model fits the data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add predicted values</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>YX<span class="sc">$</span>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(lunglm)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> YX, <span class="fu">aes</span>(<span class="at">x =</span> t))<span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> ld), <span class="at">color =</span> <span class="st">"lightblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>)<span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds), <span class="at">color =</span> <span class="st">"indianred"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">linetype =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="vectorByte2026_timedepRegression_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A note on incomplete or inconsistent time series
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The methods we discussed here work when we have a complete data set and when the observations are made at consistently spaced time points. Unfortunately, we rarely are so lucky in the biological data space. Luckily, there are ways of modeling ‘less than perfect’ time series data sets. We will not discuss these in detail, but some ways are to:</p>
+<ol type="1">
+<li>Use categorical time variables instead of continuous ones</li>
+<li>Smoothing and imputation</li>
+<li>Using time-dependent covariates (stay tuned for more on this in another module!)</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="automated-fitting-pipelines" class="level2">
+<h2 class="anchored" data-anchor-id="automated-fitting-pipelines">Automated Fitting Pipelines</h2>
+<p>In cases where we expect to keep generating new data in a data set or where we expect to perform the same analyses on multiple data sets of similar structure in the future, it can be useful to set up automated and reproducible pipelines for cleaning data and fitting models. We can even produce full reports with text that updates when new data are introduced.</p>
+<p>In the next activity, we will use the VecDyn API to access mosquito population data collected over several years in Suffolk, VA to produce a report that explores and models the data. These data continue to be collected, so there’s a good chance we would want to repeat any analyses we did with these data in the future.</p>
+<p>Download and open the <a href="./reproducibleReport.html">reproducibleReport.qmd</a> file to get started using the skills you learned in this practical to build a simple reproducible report!</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{surratt2026,
+  author = {Surratt, Alicia},
+  title = {Time {Series} {Linear} {Regression} and {Automated}
+    {Reports}},
+  date = {2026-05-29},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-surratt2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Surratt, Alicia. 2026. <span>“Time Series Linear Regression and
+Automated Reports.”</span> May 29.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

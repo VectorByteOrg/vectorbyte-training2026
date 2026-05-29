@@ -239,7 +239,8 @@ acf(mosqMod$residuals)
 ```
 
 ### Model Performance
-Here is a plot of the model predictions overlaid on the actual observations. The model $R^2$ was `{r} round(summary(mosqMod)$r.squared, 2)`, which means that `{r} round(summary(mosqMod)$r.squared*100, 0)`% of the variation in the data was explained by the model.  
+
+Here is a plot of the model predictions overlaid on the actual observations. The model $R^2$ was `{r} round(summary(mosqMod)$r.squared, 2)`, which means that `{r} round(summary(mosqMod)$r.squared*100, 0)`% of the variation in the data was explained by the model.
 
 ```{r, echo = F}
 mosqMonth$pred <- predict(mosqMod)
@@ -249,7 +250,7 @@ colors2 <- c("actual" = "black", "predicted" = "purple")
 ggplot(data = mosqMonth, aes(x = date, y = totalMos))+
   geom_line(aes(color = "actual"))+
   geom_point(aes(color = "actual"))+
-  geom_line(aes(y = pred, color = "predicted"), size = 1.5,
+  geom_line(aes(y = pred, color = "predicted"), linewidth = 1.5,
             alpha = 0.3)+
   scale_color_manual(
     name = "Color",
@@ -261,11 +262,10 @@ ggplot(data = mosqMonth, aes(x = date, y = totalMos))+
 
 ## Conclusions and Limitations
 
-It is always good to think about how our models do well and where they fall short to help make appropriate conclusions from the model. Depending on the model you chose to use, the strengths and limitations will be different. 
+It is always good to think about how our models do well and where they fall short to help make appropriate conclusions from the model. Depending on the model you chose to use, the strengths and limitations will be different.
 
 **Take a minute and write about how the model did well and where we could improve or should at least use caution in trusting its conclusions. Try using some inline code to allow the report to be flexible. For example, `{r} length(mosqMonth$pred[mosqMonth$pred < 0])` of the predictions were below zero, which is not possible in reality.**
 
 ## Challenge
 
-Using the skills you learned in the time-dependent covariate module, gather mean monthly temperature data for Suffolk, VA for the appropriate time frame and include temperature as a covariate in your model. 
-
+Using the skills you learned in the time-dependent covariate module, gather mean monthly temperature data for Suffolk, VA for the appropriate time frame and include temperature as a covariate in your model.

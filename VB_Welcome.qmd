@@ -149,15 +149,26 @@ More detailed schedules are on the respective training websites.
 
 ## VectorByte Showcase
 
-<br>
-
-Interested in learning more about data resources for VBD systems or more networking? 
+Interested in learning more about data resources for VBD systems, giving your input about the future of data sharing for VBDs, or more networking? 
 
 Sign up for the ***VectorByte Showcase***:
+
+::: columns
+::: {.column width="50%"}
 
 - 1:30 - 4:00pm
 - Steger Auditorium (where we are now) and Lobby 
 - Food and networking
+
+:::
+::: {.column width="50%"}
+
+<center>
+![](graphics/VByteShow-qr-code2026.png){width="55%"}
+</center>
+
+:::
+:::
 
 ## Questions?
 

@@ -56,18 +56,12 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 
 <br> 
 
-### Introduction to Git
+### Introduction to Git and Introduction to Data Types and Manipulation with R
 
-- [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html#introduction-to-github-through-r)
+- [Git Repository](https://github.com/EEIDWorkshop2026/materials)
 
 <br>
 
-
-### Introduction to Data Types and Manipulation with R
-
-- [Coming Soon! -- with EEID](https://eeidworkshop2026.github.io/home/materials.html)
-
-<br> 
 
 ### Introduction to Traits
 

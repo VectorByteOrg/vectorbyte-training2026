@@ -163,8 +163,12 @@ $\Rightarrow$  questing, host/food preference, thermal regulation, site selectio
 
 <center>
 ![](graphics/intro_traits_13.jpg)
-</center>                       
+</center>      
 
+## SIR Model
+<center>
+![](graphics/SIR_1.jpg)
+</center>
 -----------------------------------------------------------------------
 
 We can get more complex/realistic models...
@@ -172,7 +176,6 @@ We can get more complex/realistic models...
 <center>
 ![](graphics/SIR_2.jpg)
 </center>
-
 H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
 
 -----------------------------------------------------------------------
@@ -182,17 +185,14 @@ But with every parameter added, more data are needed!
 <center>
 ![](graphics/SIR_3.jpg)
 </center>
-
 H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
 a=biting rate, b=vector to host transmission success (proportion of bites), d=recovery
 
 
 -----------------------------------------------------------------------
-
 <center>
 ![](graphics/SIR_4.jpg)
 </center>
-
 H=host, V=vector, $_S$=susceptible, $_I$=infected, $_R$=recovered
 a=biting rate, b=vector to host transmission success (proportion of bites), d=recovery,
 c=host to vector transmission success (proportion of bites), P=extrinsic incubation period,

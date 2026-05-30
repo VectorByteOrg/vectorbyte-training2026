@@ -190,6 +190,7 @@ a=biting rate, b=vector to host transmission success (proportion of bites), d=re
 
 
 -----------------------------------------------------------------------
+
 <center>
 ![](graphics/SIR_4.jpg)
 </center>

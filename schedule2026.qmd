@@ -43,11 +43,13 @@ Morning activities will be joint with the EEID workshop
 | Time   | Activity | Materials |
 |--------|----------|-----------|
 | 8:30   | Overview  of the day         |           |
-| 9:00   | Intro to time dependent data and VecDyn | |
+| 8:45   | Intro to VecDyn and the VecDyn API | |
+| 9:15   | Environmental covariates for time and space dependent data     |           |
 | 10:30  | Break    |           |
-| 11:00  | Environmental covariates for time and space dependent data  |   |
+| 11:00  | Simple vector dynamic analysis pipeline with VecDyn and R |  |
 | 12:00  | Lunch    |           |
-| 13:00  | Simple vector dynamic analysis pipeline with VecDyn and R |  |
+| 13:00  | Simple analysis (cont) and a reproducible report |  |
+| 14:00  | Introduce Projects, brainstorming    |   |
 | 14:30  | Break    |           |
 | 15:00  | Begin Projects    |   |
 | 17:00  | Lightning talks    |           |

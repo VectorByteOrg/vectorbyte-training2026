@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!reproducibleReport.qmd" 
   output-dir: docs
 website:
   title: "VectorByte Training 2026"
@@ -33,6 +36,7 @@ format:
     toc-location: left
     axe: true
 editor: source
+
 
 
 

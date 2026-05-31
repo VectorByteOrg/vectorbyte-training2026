@@ -25,7 +25,9 @@ source("VecDyn_Dataset_Access.R")
 
 # Get data sets
 list_of_dataframes <- searchDatasets("Suffolk Virginia mosquito control")
+```
 
+```{r, echo=FALSE}
 ######## Data Cleaning ##########
 
 # Collapse the datasets into one dataset
@@ -43,7 +45,9 @@ for (i in 1:length(list_of_dataframes)) {
 mosqDF$sample_start_date <- ymd(mosqDF$sample_start_date)
 
 # Combine observations from the same date
-mosqDFcomb <- mosqDF %>% group_by(sample_start_date) %>% summarize(totalMos = sum(sample_value))
+mosqDFcomb <- mosqDF %>% 
+  group_by(sample_start_date) %>%
+  summarize(totalMos = sum(sample_value))
 
 # Add year and month variables
 mosqDFcomb$month <- month(mosqDFcomb$sample_start_date)
@@ -274,4 +278,4 @@ It is always good to think about how our models do well and where they fall shor
 
 ## Challenge
 
-Using the skills you learned in the time-dependent covariate module, gather mean monthly temperature data for Suffolk, VA for the appropriate time frame and include temperature as a covariate in your model. Consider transforming the response variable (e.g., taking a square-root) to address non-homoskedastic elements of the data. 
+Using the skills you learned in the time-dependent covariate module, gather mean monthly temperature data for Suffolk, VA for the appropriate time frame and include temperature as a covariate in your model. Consider transforming the response variable (e.g., taking a square-root) to address non-homoskedastic elements of the data.

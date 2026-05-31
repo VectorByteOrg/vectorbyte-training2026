@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Alicia Surratt">
+<meta name="author" content="Leah R Johnson">
 <meta name="dcterms.date" content="2026-05-29">
 
 <title>Time Series Linear Regression and Automated Reports – VectorByte Training 2026</title>
@@ -207,8 +208,8 @@ window.Quarto = {
   <li><a href="#example-monthly-uk-deaths-due-to-lung-infection" id="toc-example-monthly-uk-deaths-due-to-lung-infection" class="nav-link" data-scroll-target="#example-monthly-uk-deaths-due-to-lung-infection">Example: Monthly UK deaths due to lung infection</a></li>
   </ul></li>
   <li><a href="#time-dependent-linear-regression" id="toc-time-dependent-linear-regression" class="nav-link" data-scroll-target="#time-dependent-linear-regression">Time-Dependent Linear Regression</a></li>
-  <li><a href="#automated-fitting-pipelines" id="toc-automated-fitting-pipelines" class="nav-link" data-scroll-target="#automated-fitting-pipelines">Automated Fitting Pipelines</a></li>
   </ul></li>
+  <li><a href="#automated-fitting-pipelines" id="toc-automated-fitting-pipelines" class="nav-link" data-scroll-target="#automated-fitting-pipelines">Automated Fitting Pipelines</a></li>
   </ul>
 </nav>
 </nav>
@@ -226,11 +227,19 @@ window.Quarto = {
 
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Authors</div>
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
     <p class="author">Alicia Surratt </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Virginia Tech and VectorByte
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Leah R Johnson </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -806,26 +815,27 @@ F-statistic: 85.53 on 4 and 66 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </section>
 </section>
-<section id="automated-fitting-pipelines" class="level2">
-<h2 class="anchored" data-anchor-id="automated-fitting-pipelines">Automated Fitting Pipelines</h2>
+</section>
+<section id="automated-fitting-pipelines" class="level1">
+<h1>Automated Fitting Pipelines</h1>
 <p>In cases where we expect to keep generating new data in a data set or where we expect to perform the same analyses on multiple data sets of similar structure in the future, it can be useful to set up automated and reproducible pipelines for cleaning data and fitting models. We can even produce full reports with text that updates when new data are introduced.</p>
 <p>In the next activity, we will use the VecDyn API to access mosquito population data collected over several years in Suffolk, VA to produce a report that explores and models the data. These data continue to be collected, so there’s a good chance we would want to repeat any analyses we did with these data in the future.</p>
+<p>Before you can build the reproducible report, you will need to install Quarto (instructions are <a href="https://quarto.org/docs/get-started/">HERE</a>)</p>
 <p>Download and open the <a href="reproducibleReport.qmd">reproducibleReport.qmd</a> file to get started using the skills you learned in this practical to build a simple reproducible report!</p>
 
 
 </section>
-</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{surratt2026,
-  author = {Surratt, Alicia},
+  author = {Surratt, Alicia and Johnson, Leah R},
   title = {Time {Series} {Linear} {Regression} and {Automated}
     {Reports}},
   date = {2026-05-29},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-surratt2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Surratt, Alicia. 2026. <span>“Time Series Linear Regression and
-Automated Reports.”</span> May 29.
+Surratt, Alicia, and Leah R Johnson. 2026. <span>“Time Series Linear
+Regression and Automated Reports.”</span> May 29.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

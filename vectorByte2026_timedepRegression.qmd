@@ -5,6 +5,10 @@ author:
       given: Alicia
       family: Surratt
     affiliation: Virginia Tech and VectorByte
+  - name: 
+      given: Leah R
+      family: Johnson
+    affiliation: Virginia Tech and VectorByte
 citation: true
 date: 2026-05-29
 date-format: long
@@ -361,10 +365,12 @@ The methods we discussed here work when we have a complete data set and when the
 3.  Using time-dependent covariates (stay tuned for more on this in another module!)
 :::
 
-## Automated Fitting Pipelines
+# Automated Fitting Pipelines
 
 In cases where we expect to keep generating new data in a data set or where we expect to perform the same analyses on multiple data sets of similar structure in the future, it can be useful to set up automated and reproducible pipelines for cleaning data and fitting models. We can even produce full reports with text that updates when new data are introduced.
 
 In the next activity, we will use the VecDyn API to access mosquito population data collected over several years in Suffolk, VA to produce a report that explores and models the data. These data continue to be collected, so there's a good chance we would want to repeat any analyses we did with these data in the future.
+
+Before you can build the reproducible report, you will need to install Quarto (instructions are [HERE](https://quarto.org/docs/get-started/))
 
 Download and open the [reproducibleReport.qmd](reproducibleReport.qmd) file to get started using the skills you learned in this practical to build a simple reproducible report!

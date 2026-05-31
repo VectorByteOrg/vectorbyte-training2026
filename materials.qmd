@@ -108,6 +108,7 @@ We are assuming familiarity with `R` basics as well as at least introductory sta
 ### Introduction to Time Dependent Data and reproducible data pipelines
 
 - [Practical](vectorByte2026_timedepRegression.qmd)
+- [Installing Quarto](https://quarto.org/docs/get-started/)
 - [Example reproducible report](reproducibleReport.qmd)
 - [Git repository](https://github.com/VectorByteOrg/vectorbyte-training2026)
 

@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "!reproducibleReport.qmd" 
     - "!reproducibleReport_localFiles.qmd" 
+    - "!reproducibleReport_noAPI.qmd" 
   output-dir: docs
 website:
   title: "VectorByte Training 2026"

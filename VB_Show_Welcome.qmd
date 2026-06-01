@@ -124,8 +124,10 @@ Session 2:
 ::: {.column width="40%"}
 
 <center>
-Join Us! QR
+Join Us!
 
+<br>
+![](graphics/VByte-QUBESHub-qr-code.png){width="80%"}
 </center>
 
 :::
@@ -139,7 +141,6 @@ Join Us! QR
   - ***VecDyn*** - observations of vector abundance across time and space, in a standardized format
 - ***Vector Data Ecosystem***: Living guide to data resources for VDB systems
 
-## Questions?
 
 
 
